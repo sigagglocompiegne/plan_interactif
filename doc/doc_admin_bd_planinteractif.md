@@ -30,16 +30,33 @@ L'ensemble des classes d'objets de gestion sont stockés pour la plupart dans le
 - limites adminsitratives :
 
 `r_osm.geo_v_osm_commune_arcba` : Donnée géographique des limites communales de l'Agglomération de la Région de Compiègne
-
-Particularité(s) à noter : aucune
-
----
-
 `r_osm.geo_osm_masque_arcba` : Donnée géographique générant un polygone à trou sur l'Agglomération de la Région de Compiègne pour créer un effet masque sur les territroires périphériques.
 
 Particularité(s) à noter : aucune
 
 ---
+
+- adresses :
+
+`x_apps_public.xappspublic_geo_v_adresse` : Vue géographique des adresses sur le Pays Compiégnois filtrée dans l'application sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+Particularité(s) à noter : aucune
+
+---
+
+- références des élus :
+
+`x_apps_public.xappspublic_geo_vmr_planinteractif_refelu` : Vue matérialisée des élus référents (communes et/ou quartier) sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+Particularité(s) à noter : aucune
+
+---
+
+- POI :
 
 `r_plan.geo_plan_refpoi` : Donnée géographique des POI sur l'Agglomération de la Région de Compiègne.
 `r_plan.an_plan_refcontactpoi` : Donnée alphanumérique des contacts des POI sur l'Agglomération de la Région de Compiègne.
@@ -48,7 +65,25 @@ Particularité(s) à noter : aucune
 
 ---
 
+- Réseau de transport et mobilité :
+
 `m_mobilite.geo_mob_rurbain_la` : Donnée géographique des arrêts logiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`x_apps_public.xappspublic_an_v_tic_la_gdplu` : Vue alphanumérique contenant les données spécifiques pré-traitées sur les arrêts logiques sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+`x_apps_public.xappspublic_geo_v_tic_la_tampon` : Vue géographique contenant les tampons correspondant aux périmètres d'attraction d'un arrêt de bus pour remonter dans l'applicatif Grand Public les lignes desservant les adresses ou les équipements sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+`x_apps_public.xappspublic_geo_v_tic_ze_gdplu` : Vue géographique contenant les tampons correspondant aux périmètres d'attraction d'un arrêt de bus pour remonter dans l'applicatif Grand Public les lignes desservant les adresses ou les équipements sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+`x_apps_public.xappspublic_an_v_tic_ze_gdplu` : Vue alphanumérique contenant les données spécifiques pré-traitées sur les arrêts physiques sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
 `m_mobilite.geo_mob_rurbain_ze` : Donnée géographique des arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `m_mobilite.an_mob_rurbain_passage` : Donnée alphanumérique gérant les passages aux arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `m_mobilite.lt_mob_rurbain_terminus` : Liste de valeur contenant les lieux de terminus ou de passage intermédiaire du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
@@ -59,6 +94,8 @@ Particularité(s) à noter : les données mobilités font l'objet de traitement 
 
 ---
 
+- vélo,rando :
+
 `m_mobilite.geo_mob_3v_station` : Donnée géographique contenant la localisation des stationnements pour vélo sur l'Agglomération de la Région de Compiègne(TIC).
 `m_tourisme.geo_tou_depart_rando` : Donnée géographique contenant la localisation des départs de randonnées sur l'Agglomération de la Région de Compiègne(TIC).
 
@@ -66,12 +103,53 @@ Particularité(s) à noter : aucune
 
 ---
 
+- tri sélectif et OM : 
+
 `m_dechet.geo_dec_pav_verre` : Donnée géographique contenant la localisation des conteneurs verres sur l'Agglomération de la Région de Compiègne(TIC).
 `m_dechet.geo_dec_pav_tlc` : Donnée géographique contenant la localisation des conteneurs textiles, lignes, chaussures sur l'Agglomération de la Région de Compiègne(TIC).
 `m_dechet.an_dec_pav_doc_media` : Donnée alphnaumérique contenant les documents joints aux conteneurs (photos) sur l'Agglomération de la Région de Compiègne(TIC).
 `m_dechet.geo_dec_secteur_om` : Donnée géoégraphique contenant les secteurs de ramassage des ordures ménagères sur l'Agglomération de la Région de Compiègne(TIC).
 
 Particularité(s) à noter : aucune
+
+`x_apps_public.xappspublic_geo_v_dec_pav_tampon_gdplu` : Vue géographique contenant les tampons correspondant à l'aire d'influence du conteneur à verre (en théorie) sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+`x_apps_public.xappspublic_geo_v_dec_pav_tlc_tampon_gdplu` : Vue géographique contenant les tampons correspondant à l'aire d'influence du conteneur TLC (en théorie) sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+`x_apps_public.xappspublic_geo_v_dec_secteur_enc_secteur` : Vue géométrique contenant les secteurs de rammassage des encombrants  sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
+
+---
+
+- secteurs scolaires :
+
+`x_apps_public.xappspublic_geo_v_carte_scolaire_mat` : Vue géométrique contenant les informations de la carte scolaire pour les écoles maternelles sur l'Agglomération de la Région de Compiègne. Cette donnée permet de remonter l'école assignée à l'adresse saisie dans l'application.
+
+(structure ici)
+
+`x_apps_public.xappspublic_geo_v_carte_scolaire_ele` : Vue géométrique contenant les informations de la carte scolaire pour les écoles élémentaires sur l'Agglomération de la Région de Compiègne. Cette donnée permet de remonter l'école assignée à l'adresse saisie dans l'application.
+
+(structure ici)
+
+---
+
+- Bureau de vote :
+
+`r_adminsitratif.geo_decoupage_electoral` : Donnée géographique contenant le découpage électoral dans les communes de l'Agglomération de la Région de Compiègne(TIC).
+
+
+Particularité(s) à noter : certaines communes ne sont pas renseignées.
+
+-- Fibre optique :
+
+`x_apps_public.xappspublic_geo_v_fo_sfr_pm` : Vue géométrique contenant les secteurs de PM et les informations liées à l'avancement de la fibre optioque sur l'Agglomération de la Région de Compiègne.
+
+(structure ici)
 
 ---
 
