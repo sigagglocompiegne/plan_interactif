@@ -2423,6 +2423,111 @@ GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_dec_secteur_enc_secteur TO cr
 GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_dec_secteur_enc_secteur TO read_sig;
 
 
+-- ************************************************************************************************************************
+-- *** Carte scolaire
+-- ************************************************************************************************************************
+
+-- View: x_apps_public.xappspublic_geo_v_carte_scolaire_mat
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_mat;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_mat AS
+ WITH req_1 AS (
+         WITH req_a AS (
+                 SELECT s.id,
+                    a.id_adresse,
+                    s.url
+                   FROM x_apps.xapps_geo_vmr_adresse a,
+                    r_administratif.geo_carte_scolaire s
+                  WHERE st_intersects(a.geom, s.geom) = true
+                )
+         SELECT req_a.id_adresse,
+            lk_cscomat_poi.id,
+            lk_cscomat_poi.id_poi_mat,
+            req_a.url
+           FROM req_a,
+            r_administratif.lk_cscomat_poi
+          WHERE req_a.id = lk_cscomat_poi.id
+        )
+ SELECT row_number() OVER () AS gid,
+    req_1.id_adresse,
+    req_1.id,
+    req_1.id_poi_mat,
+        CASE
+            WHEN geo_plan_refpoi.id_poi = 'poi801'::bpchar THEN 'Rattachement aux écoles maternelles de Compiègne (se renseigner en mairie)'::character varying(255)
+            WHEN geo_plan_refpoi.id_poi = 'poi743'::bpchar OR geo_plan_refpoi.id_poi = 'poi820'::bpchar OR geo_plan_refpoi.id_poi = 'poi678'::bpchar THEN 'Se renseigner en mairie'::character varying(255)
+            ELSE
+            CASE
+                WHEN geo_plan_refpoi.id_poi = 'poi927'::bpchar THEN 'Se rapprocher de la mairie pour connaître le périmètre scolaire dont dépend votre ou vos enfant(s)'::character varying(255)
+                ELSE geo_plan_refpoi.poi_lib::character varying(255)
+            END
+        END AS affiche_mat,
+    req_1.url,
+    geo_plan_refpoi.geom
+   FROM req_1
+     JOIN r_plan.geo_plan_refpoi ON req_1.id_poi_mat::bpchar = geo_plan_refpoi.id_poi;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_mat
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_mat
+    IS 'Vue géographique remontant pour chaque adresse les écoles maternelles de rattachement et la géométrie du POI (export shape via FME) pour la gestion de l''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_mat TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_mat TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_mat TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_mat TO read_sig;
+
+
+-- View: x_apps_public.xappspublic_geo_v_carte_scolaire_ele
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_ele;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_ele AS
+ WITH req_1 AS (
+         WITH req_a AS (
+                 SELECT s.id,
+                    a.id_adresse,
+                    s.url
+                   FROM x_apps.xapps_geo_vmr_adresse a,
+                    r_administratif.geo_carte_scolaire s
+                  WHERE st_intersects(a.geom, s.geom) = true
+                )
+         SELECT req_a.id_adresse,
+            lk_cscoele_poi.id,
+            lk_cscoele_poi.id_poi_ele,
+            req_a.url
+           FROM req_a,
+            r_administratif.lk_cscoele_poi
+          WHERE req_a.id = lk_cscoele_poi.id
+        )
+ SELECT row_number() OVER () AS gid,
+    req_1.id_adresse,
+    req_1.id,
+    req_1.id_poi_ele,
+        CASE
+            WHEN geo_plan_refpoi.id_poi = 'poi743'::bpchar OR geo_plan_refpoi.id_poi = 'poi820'::bpchar OR geo_plan_refpoi.id_poi = 'poi678'::bpchar THEN 'Se renseigner en mairie'::character varying(255)
+            ELSE
+            CASE
+                WHEN geo_plan_refpoi.id_poi = 'poi999'::bpchar THEN 'Ecole élémentaire les Remparts et/ou du Centre (contactez Mme GRAF, directrice des Remparts, au 0344409235)'::character varying(255)
+                WHEN geo_plan_refpoi.id_poi = 'poi927'::bpchar THEN 'Se rapprocher de la mairie pour connaître le périmètre scolaire dont dépend votre ou vos enfant(s)'::character varying(255)
+                ELSE geo_plan_refpoi.poi_lib::character varying(255)
+            END
+        END AS affiche_ele,
+    req_1.url,
+    geo_plan_refpoi.geom
+   FROM req_1
+     JOIN r_plan.geo_plan_refpoi ON req_1.id_poi_ele::bpchar = geo_plan_refpoi.id_poi;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_carte_scolaire_ele
+    IS 'Vue géographique remontant pour chaque adresse les écoles élémentaires de rattachement avec la géométrie du POI (export shape via FME) pour la gestion de l''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO read_sig;
+
 
 
 
