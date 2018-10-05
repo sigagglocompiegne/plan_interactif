@@ -88,7 +88,23 @@ Particularité(s) à noter : aucune
 
 `x_apps_public.xappspublic_geo_vmr_planinteractif_refelu` : Vue matérialisée des élus référents (communes et/ou quartier) sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||row_number|
+|id|Identifiant du quartier|character varying||r_administratif.geo_adm_quartier|
+|insee|code insee de la commune|character varying||r_administratif.geo_adm_quartier|
+|nom|nom du quartier|character varying||r_administratif.geo_adm_quartier|
+|commune|libellé de la commune|character varying||r_administratif.geo_adm_quartier|
+|l_logo|nom du fichier image contenant le logo de la commune|character varying||r_administratif.geo_adm_quartier|
+|l_m|nom du maire|character varying||r_administratif.an_ref_maire|
+|l_m_titre|titre du maire|character varying||r_administratif.an_ref_maire|
+|l_m_email|email du maire|character varying||r_administratif.an_ref_maire|
+|l_m_tel|téléphone du maire|character varying||r_administratif.an_ref_maire|
+|l_m_url|url dusite internet, facebook, ... du maire|character varying||r_administratif.an_ref_maire|
+|l_m_photo|nom du fichier image contenant la photo du maire|character varying||r_administratif.an_ref_maire|
+|l_er1|nom du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+
+
 
 Particularité(s) à noter : aucune
 
