@@ -259,6 +259,7 @@ Particularité(s) à noter : une adresse spécifique peut-être un secteur car s
 |affiche_mat|formatage d'un message reprenant l'école de rattachement ou un autre message d'informations|character varying||sur condition de l'id_poi affiche nom de l'école ou message en dur|
 
 `x_apps_public.xappspublic_geo_v_carte_scolaire_ele` : Vue géométrique contenant les informations de la carte scolaire pour les écoles élémentaires sur l'Agglomération de la Région de Compiègne. Cette donnée permet de remonter l'école assignée à l'adresse saisie dans l'application.
+
 |Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
 |:---|:---|:---|:---|:---|
 |gid|Identifiant interne|integer||row_number|
@@ -280,7 +281,11 @@ Particularité(s) à noter : certaines communes ne sont pas renseignées.
 
 `x_apps_public.xappspublic_geo_v_fo_sfr_pm` : Vue géométrique contenant les secteurs de PM et les informations liées à l'avancement de la fibre optioque sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|mdate_maj|date maximum |geometry(polygon,2154)||m_mobilite.geo_mob_rurbain_la|
+
+Particularité(s) à noter : cette vue reprend les éléments de la table m_reseau_sec.geo_fo_sfr_pm sauf pour la date maximum de mise à jour contenue dans les données.
 
 ---
 
