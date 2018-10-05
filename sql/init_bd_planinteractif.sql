@@ -4,10 +4,14 @@
 
 -- ####################################################################################################################################################
 -- ###                                                                                                                                              ###
--- ###                                                       VUES APPLICATIVED GRANS PUBLIC                                                                      ###
+-- ###                                                       VUES APPLICATIVED GRAND PUBLIC                                                                      ###
 -- ###                                                                                                                                              ###
 -- ####################################################################################################################################################
 
+
+-- ************************************************************************************************************************
+-- *** ADRESSE
+-- ************************************************************************************************************************
 
 -- View: x_apps_public.xappspublic_geo_v_adresse
 
@@ -77,6 +81,11 @@ GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_ad
 GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_adresse TO sig_create;
 GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_adresse TO create_sig;
 GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_adresse TO read_sig;
+
+
+-- ************************************************************************************************************************
+-- *** REFERENCE DES ELUS
+-- ************************************************************************************************************************
 
 
 -- View: x_apps_public.xappspublic_geo_vmr_planinteractif_refelu
@@ -1575,4 +1584,731 @@ GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_vmr_
 GRANT ALL ON TABLE x_apps_public.xappspublic_geo_vmr_planinteractif_refelu TO sig_create;
 GRANT ALL ON TABLE x_apps_public.xappspublic_geo_vmr_planinteractif_refelu TO create_sig;
 GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_vmr_planinteractif_refelu TO read_sig;
+
+
+-- ************************************************************************************************************************
+-- *** MOBILITE (LA)
+-- ************************************************************************************************************************
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu AS
+ SELECT la.id_la,
+    la.nom,
+    lu1.num_ligne AS n_lu1,
+    lu2.num_ligne AS n_lu2,
+    djf.num_ligne AS n_djf,
+    tad.num_ligne AS n_tad,
+    pu.num_ligne AS n_pu,
+    sco.num_ligne AS n_sco,
+    ((((
+        CASE
+            WHEN lu1.num_ligne IS NOT NULL THEN lu1.num_ligne
+            ELSE ''::text
+        END ||
+        CASE
+            WHEN lu2.num_ligne IS NOT NULL THEN '-'::text || lu2.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN djf.num_ligne IS NOT NULL THEN '-'::text || djf.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN tad.num_ligne IS NOT NULL THEN '-'::text || tad.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN pu.num_ligne IS NOT NULL THEN '-'::text || pu.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN sco.num_ligne IS NOT NULL THEN '-'::text || sco.num_ligne
+            ELSE ''::text
+        END AS n_tic,
+        CASE
+            WHEN lu1.num_ligne ~~ '1%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_1.png"/>'::text
+            ELSE NULL::text
+        END AS img_l1,
+        CASE
+            WHEN lu1.num_ligne = '2'::text OR lu1.num_ligne ~~ '%-2'::text OR lu1.num_ligne ~~ '2-%'::text OR lu1.num_ligne ~~ '%-2-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_2.png"/>'::text
+            ELSE NULL::text
+        END AS img_l2,
+        CASE
+            WHEN lu1.num_ligne ~~ '%3%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_3.png"/>'::text
+            ELSE NULL::text
+        END AS img_l3,
+        CASE
+            WHEN lu1.num_ligne ~~ '%4%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_4.png"/>'::text
+            ELSE NULL::text
+        END AS img_l4,
+        CASE
+            WHEN lu1.num_ligne ~~ '%5%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_5.png"/>'::text
+            ELSE NULL::text
+        END AS img_l5,
+        CASE
+            WHEN lu1.num_ligne ~~ '%6%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_6.png"/>'::text
+            ELSE NULL::text
+        END AS img_l6,
+        CASE
+            WHEN lu2.num_ligne ~~ 'ARC Express'::text OR lu2.num_ligne ~~ '%-ZA1'::text OR lu2.num_ligne ~~ '%-ZA1-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_ARCExpress.png"/>'::text
+            ELSE NULL::text
+        END AS img_larcexpress,
+        CASE
+            WHEN lu2.num_ligne ~~ 'Navette HM'::text OR lu2.num_ligne ~~ '%-Navette HM'::text OR lu2.num_ligne ~~ '%-Navette HM-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_NavetteHM.png"/>'::text
+            ELSE NULL::text
+        END AS img_hm,
+        CASE
+            WHEN djf.num_ligne ~~ 'D1'::text OR djf.num_ligne ~~ 'D1%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_D1.png"/>'::text
+            ELSE NULL::text
+        END AS img_ld1,
+        CASE
+            WHEN djf.num_ligne ~~ 'D2'::text OR djf.num_ligne ~~ '%-D2'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_D2.png"/>'::text
+            ELSE NULL::text
+        END AS img_ld2,
+        CASE
+            WHEN tad.num_ligne ~~ '%13%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_13.png"/>'::text
+            ELSE NULL::text
+        END AS img_l13,
+        CASE
+            WHEN tad.num_ligne ~~ '%14%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_14.png"/>'::text
+            ELSE NULL::text
+        END AS img_l14,
+        CASE
+            WHEN tad.num_ligne ~~ '%15%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_15.png"/>'::text
+            ELSE NULL::text
+        END AS img_l15,
+        CASE
+            WHEN tad.num_ligne ~~ '%16%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_16.png"/>'::text
+            ELSE NULL::text
+        END AS img_l16,
+        CASE
+            WHEN tad.num_ligne ~~ '%17%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_17.png"/>'::text
+            ELSE NULL::text
+        END AS img_l17,
+        CASE
+            WHEN tad.num_ligne ~~ '%18%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_18.png"/>'::text
+            ELSE NULL::text
+        END AS img_l18,
+        CASE
+            WHEN tad.num_ligne ~~ '%19%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_19.png"/>'::text
+            ELSE NULL::text
+        END AS img_l19,
+        CASE
+            WHEN tad.num_ligne ~~ '%20%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_20.png"/>'::text
+            ELSE NULL::text
+        END AS img_l20,
+        CASE
+            WHEN pu.num_ligne ~~ '%101%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_101.png"/>'::text
+            ELSE NULL::text
+        END AS img_l101,
+        CASE
+            WHEN pu.num_ligne ~~ '%103%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_103.png"/>'::text
+            ELSE NULL::text
+        END AS img_l103,
+        CASE
+            WHEN pu.num_ligne ~~ '%106%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_106.png"/>'::text
+            ELSE NULL::text
+        END AS img_l106,
+        CASE
+            WHEN pu.num_ligne ~~ '%107%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_107.png"/>'::text
+            ELSE NULL::text
+        END AS img_l107,
+        CASE
+            WHEN pu.num_ligne ~~ '%109%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_109.png"/>'::text
+            ELSE NULL::text
+        END AS img_l109,
+        CASE
+            WHEN sco.num_ligne ~~ '%102%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_102.png"/>'::text
+            ELSE NULL::text
+        END AS img_l102,
+        CASE
+            WHEN sco.num_ligne ~~ '%104%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_104.png"/>'::text
+            ELSE NULL::text
+        END AS img_l104,
+        CASE
+            WHEN sco.num_ligne ~~ '%108%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_108.png"/>'::text
+            ELSE NULL::text
+        END AS img_l108,
+        CASE
+            WHEN sco.num_ligne ~~ '%110%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_110.png"/>'::text
+            ELSE NULL::text
+        END AS img_l110
+   FROM m_mobilite.geo_mob_rurbain_la la
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 lu1 ON la.id_la::text = lu1.id_la::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 lu2 ON la.id_la::text = lu2.id_la::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_djf djf ON la.id_la::text = djf.id_la::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_pu pu ON la.id_la::text = pu.id_la::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_sco sco ON la.id_la::text = sco.id_la::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_la_gdpu_tad tad ON la.id_la::text = tad.id_la::text
+  WHERE la.statut::text = '10'::text
+  ORDER BY la.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes en desserte du réseau TIC (intégré au FME export pour l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle)';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu TO read_sig;
+
+-- ******************************************************************
+-- la vue précédente est possible car les vues ci-dessous existent
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_djf
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_djf;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_djf AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = 'D1'::text OR l.nom_court::text = 'D2'::text)
+          ORDER BY ze.id_la
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_djf
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_djf
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes dimanche et jours fériés en desserte du réseau TIC (intégré à la vue xapps_an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_djf TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_djf TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_djf TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_djf TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = '1'::text OR l.nom_court::text = '2'::text OR l.nom_court::text = '3'::text OR l.nom_court::text = '4'::text OR l.nom_court::text = '5'::text OR l.nom_court::text = '6'::text)
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes urbaines (1 à 6) en desserte du réseau TIC (intégré à la vue an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1 TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = 'ARC Express'::text OR l.nom_court::text = 'Navette HM'::text)
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text), '"'::text, ''::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes urbaines (ARC Express et HM) en desserte du réseau TIC (intégré à la vue an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2 TO read_sig;
+
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_pu
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_pu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_pu AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = '101'::text OR l.nom_court::text = '103'::text OR l.nom_court::text = '106'::text OR l.nom_court::text = '107'::text OR l.nom_court::text = '109'::text)
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_pu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_pu
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes péri_urbain (hors ARC Express) en desserte du réseau TIC (intégré à la vue an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_pu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_pu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_pu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_pu TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_sco
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_sco;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_sco AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = '102'::text OR l.nom_court::text = '104'::text OR l.nom_court::text = '108'::text OR l.nom_court::text = '110'::text)
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_sco
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_sco
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes scolaires en desserte du réseau TIC (intégré à la vue an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_sco TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_sco TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_sco TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_sco TO read_sig;
+
+
+-- View: x_apps_public.xappspublic_an_v_tic_la_gdpu_tad
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_tad;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_tad AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT ze.id_la,
+            l.nom_court
+           FROM m_mobilite.geo_mob_rurbain_ze ze,
+            m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND ze.id_ze::text = p.id_ze::text AND (l.nom_court::text = '13'::text OR l.nom_court::text = '14'::text OR l.nom_court::text = '15'::text OR l.nom_court::text = '16'::text OR l.nom_court::text = '17'::text OR l.nom_court::text = '18'::text OR l.nom_court::text = '19'::text OR l.nom_court::text = '20'::text)
+        ), req_la AS (
+         SELECT geo_mob_rurbain_la.id_la,
+            geo_mob_rurbain_la.nom
+           FROM m_mobilite.geo_mob_rurbain_la
+        )
+ SELECT req_num_lu.id_la,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu,
+    req_la
+  WHERE req_num_lu.id_la::text = req_la.id_la::text
+  GROUP BY req_num_lu.id_la;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_tad
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_la_gdpu_tad
+    IS 'Vue alphanumétique des lieux d''arrêt avec le numéro des lignes scolaires en desserte du réseau TIC (intégré à la vue an_v_tic_la_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_tad TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_tad TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_tad TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_la_gdpu_tad TO read_sig;
+
+
+-- ************************************************************************************************************************
+-- *** MOBILITE (ZE)
+-- ************************************************************************************************************************
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu AS
+ SELECT ze.id_ze,
+    lu1.num_ligne AS n_lu1,
+    lu2.num_ligne AS n_lu2,
+    djf.num_ligne AS n_djf,
+    tad.num_ligne AS n_tad,
+    pu.num_ligne AS n_pu,
+    sco.num_ligne AS n_sco,
+    ((((
+        CASE
+            WHEN lu1.num_ligne IS NOT NULL THEN lu1.num_ligne
+            ELSE ''::text
+        END ||
+        CASE
+            WHEN lu2.num_ligne IS NOT NULL THEN '-'::text || lu2.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN djf.num_ligne IS NOT NULL THEN '-'::text || djf.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN tad.num_ligne IS NOT NULL THEN '-'::text || tad.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN pu.num_ligne IS NOT NULL THEN '-'::text || pu.num_ligne
+            ELSE ''::text
+        END) ||
+        CASE
+            WHEN sco.num_ligne IS NOT NULL THEN '-'::text || sco.num_ligne
+            ELSE ''::text
+        END AS n_tic,
+        CASE
+            WHEN lu1.num_ligne ~~ '1%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_1.png"/>'::text
+            ELSE NULL::text
+        END AS img_l1,
+        CASE
+            WHEN lu1.num_ligne = '2'::text OR lu1.num_ligne ~~ '%-2'::text OR lu1.num_ligne ~~ '2-%'::text OR lu1.num_ligne ~~ '%-2-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_2.png"/>'::text
+            ELSE NULL::text
+        END AS img_l2,
+        CASE
+            WHEN lu1.num_ligne ~~ '%3%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_3.png"/>'::text
+            ELSE NULL::text
+        END AS img_l3,
+        CASE
+            WHEN lu1.num_ligne ~~ '%4%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_4.png"/>'::text
+            ELSE NULL::text
+        END AS img_l4,
+        CASE
+            WHEN lu1.num_ligne ~~ '%5%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_5.png"/>'::text
+            ELSE NULL::text
+        END AS img_l5,
+        CASE
+            WHEN lu1.num_ligne ~~ '%6%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_6.png"/>'::text
+            ELSE NULL::text
+        END AS img_l6,
+        CASE
+            WHEN lu2.num_ligne ~~ 'ARC Express'::text OR lu2.num_ligne ~~ '%-ARC Express'::text OR lu2.num_ligne ~~ '%-ARC Express-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_ARCExpress.png"/>'::text
+            ELSE NULL::text
+        END AS img_lae,
+        CASE
+            WHEN lu2.num_ligne ~~ 'Navette HM'::text OR lu2.num_ligne ~~ '%-Navette HM'::text OR lu2.num_ligne ~~ '%-Navette HM-%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_NavetteHM.png"/>'::text
+            ELSE NULL::text
+        END AS img_hm,
+        CASE
+            WHEN djf.num_ligne ~~ 'D1'::text OR djf.num_ligne ~~ 'D1%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_D1.png"/>'::text
+            ELSE NULL::text
+        END AS img_ld1,
+        CASE
+            WHEN djf.num_ligne ~~ 'D2'::text OR djf.num_ligne ~~ '%-D2'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_D2.png"/>'::text
+            ELSE NULL::text
+        END AS img_ld2,
+        CASE
+            WHEN tad.num_ligne ~~ '%13%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_13.png"/>'::text
+            ELSE NULL::text
+        END AS img_l13,
+        CASE
+            WHEN tad.num_ligne ~~ '%14%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_14.png"/>'::text
+            ELSE NULL::text
+        END AS img_l14,
+        CASE
+            WHEN tad.num_ligne ~~ '%15%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_15.png"/>'::text
+            ELSE NULL::text
+        END AS img_l15,
+        CASE
+            WHEN tad.num_ligne ~~ '%16%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_16.png"/>'::text
+            ELSE NULL::text
+        END AS img_l16,
+        CASE
+            WHEN tad.num_ligne ~~ '%17%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_17.png"/>'::text
+            ELSE NULL::text
+        END AS img_l17,
+        CASE
+            WHEN tad.num_ligne ~~ '%18%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_18.png"/>'::text
+            ELSE NULL::text
+        END AS img_l18,
+        CASE
+            WHEN tad.num_ligne ~~ '%19%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_19.png"/>'::text
+            ELSE NULL::text
+        END AS img_l19,
+        CASE
+            WHEN tad.num_ligne ~~ '%20%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_20.png"/>'::text
+            ELSE NULL::text
+        END AS img_l20,
+        CASE
+            WHEN pu.num_ligne ~~ '%101%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_101.png"/>'::text
+            ELSE NULL::text
+        END AS img_l101,
+        CASE
+            WHEN pu.num_ligne ~~ '%103%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_103.png"/>'::text
+            ELSE NULL::text
+        END AS img_l103,
+        CASE
+            WHEN pu.num_ligne ~~ '%106%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_106.png"/>'::text
+            ELSE NULL::text
+        END AS img_l106,
+        CASE
+            WHEN pu.num_ligne ~~ '%107%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_107.png"/>'::text
+            ELSE NULL::text
+        END AS img_l107,
+        CASE
+            WHEN pu.num_ligne ~~ '%109%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_109.png"/>'::text
+            ELSE NULL::text
+        END AS img_l109,
+        CASE
+            WHEN sco.num_ligne ~~ '%102%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_102.png"/>'::text
+            ELSE NULL::text
+        END AS img_l102,
+        CASE
+            WHEN sco.num_ligne ~~ '%104%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_104.png"/>'::text
+            ELSE NULL::text
+        END AS img_l104,
+        CASE
+            WHEN sco.num_ligne ~~ '%108%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_108.png"/>'::text
+            ELSE NULL::text
+        END AS img_l108,
+        CASE
+            WHEN sco.num_ligne ~~ '%110%'::text THEN '<img src="http://geo.compiegnois.fr/documents/metiers/mob/tic/logo/ligne_110.png"/>'::text
+            ELSE NULL::text
+        END AS img_l110
+   FROM m_mobilite.geo_mob_rurbain_ze ze
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 lu1 ON ze.id_ze::text = lu1.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 lu2 ON ze.id_ze::text = lu2.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf djf ON ze.id_ze::text = djf.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu pu ON ze.id_ze::text = pu.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco sco ON ze.id_ze::text = sco.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad tad ON ze.id_ze::text = tad.id_ze::text
+  WHERE ze.statut::text = '10'::text
+  ORDER BY ze.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes en desserte du réseau TIC  (intégré au FME d''export pour l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle)';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu TO read_sig;
+
+
+-- ******************************************************************
+-- la vue précédente est possible car les vues ci-dessous existent
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = 'D1'::text OR l.nom_court::text = 'D2'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes dimanche et jours fériés en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_djf TO read_sig;
+
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = '1'::text OR l.nom_court::text = '2'::text OR l.nom_court::text = '3'::text OR l.nom_court::text = '4'::text OR l.nom_court::text = '5'::text OR l.nom_court::text = '6'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes urbaines (1 à 6) en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_1 TO read_sig;
+
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = 'ARC Express'::text OR l.nom_court::text = 'Navette HM'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text), '"'::text, ''::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes urbaines (ARC Express et HM) en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_lu_2 TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = '101'::text OR l.nom_court::text = '103'::text OR l.nom_court::text = '106'::text OR l.nom_court::text = '107'::text OR l.nom_court::text = '109'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes péri_urbain (hors ARC Express) en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_pu TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = '102'::text OR l.nom_court::text = '104'::text OR l.nom_court::text = '108'::text OR l.nom_court::text = '110'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes scolaires en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco TO read_sig;
+
+-- View: x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad
+
+-- DROP VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad AS
+ WITH req_num_lu AS (
+         SELECT DISTINCT p.id_ze,
+            l.nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p,
+            m_mobilite.an_mob_rurbain_ligne l
+          WHERE p.id_ligne::text = l.id_ligne::text AND (l.nom_court::text = '13'::text OR l.nom_court::text = '14'::text OR l.nom_court::text = '15'::text OR l.nom_court::text = '16'::text OR l.nom_court::text = '17'::text OR l.nom_court::text = '18'::text OR l.nom_court::text = '19'::text OR l.nom_court::text = '20'::text)
+        )
+ SELECT req_num_lu.id_ze,
+    replace(replace(replace(array_agg(req_num_lu.nom_court ORDER BY req_num_lu.nom_court::text)::text, '{'::text, ''::text), '}'::text, ''::text), ','::text, '-'::text) AS num_ligne
+   FROM req_num_lu
+  GROUP BY req_num_lu.id_ze;
+
+ALTER TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad
+    IS 'Vue alphanumétique des zones d''embarquement avec le numéro des lignes scolaires en desserte du réseau TIC (intégré à la vue an_v_tic_ze_gdpu pour export dans l''application GEO Gd Public pour l''affichage des lignes dans les résultats de recherche et info-bulle';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO read_sig;
+
+
+
+
+
+
+
+
 
