@@ -2305,6 +2305,50 @@ GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO create_sig;
 GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO read_sig;
 
 
+-- ************************************************************************************************************************
+-- *** MOBILITE (Tampon LA)
+-- ************************************************************************************************************************
+
+-- View: x_apps_public.xappspublic_geo_v_tic_la_tampon
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_la_tampon;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_la_tampon AS
+ SELECT geo_mob_rurbain_la.id_la,
+    geo_mob_rurbain_la.date_sai,
+    geo_mob_rurbain_la.date_maj,
+    geo_mob_rurbain_la.op_sai,
+    geo_mob_rurbain_la.modification,
+    geo_mob_rurbain_la.statut,
+    geo_mob_rurbain_la.nom,
+    geo_mob_rurbain_la.nom_court,
+    geo_mob_rurbain_la.description,
+    geo_mob_rurbain_la.x_l93,
+    geo_mob_rurbain_la.y_l93,
+    geo_mob_rurbain_la.date_deb,
+    geo_mob_rurbain_la.date_fin,
+    geo_mob_rurbain_la.hierarchie,
+    geo_mob_rurbain_la.insee,
+    geo_mob_rurbain_la.commune,
+    geo_mob_rurbain_la.id_parent,
+    geo_mob_rurbain_la.sens,
+    geo_mob_rurbain_la.angle,
+    geo_mob_rurbain_la.observ,
+    geo_mob_rurbain_la.v_tampon,
+    geo_mob_rurbain_la.geom2
+   FROM m_mobilite.geo_mob_rurbain_la
+  WHERE geo_mob_rurbain_la.statut::text = '10'::text
+  ORDER BY geo_mob_rurbain_la.nom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_la_tampon
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_la_tampon
+    IS 'Vue géométrique contenant les tampons d''emprise des lieux d''arrêt pour EXPORT FME et recherche des adresse dans ses tampons pour remonter l''arrêt et les lignes en desserte';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_la_tampon TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_la_tampon TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_la_tampon TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_la_tampon TO read_sig;
 
 
 
