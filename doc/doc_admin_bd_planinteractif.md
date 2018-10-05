@@ -142,7 +142,16 @@ Particularité(s) à noter : aucune
 
 |Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
 |:---|:---|:---|:---|:---|
-|gid|Identifiant interne|integer||row_number|
+|id_la|Identifiant du point d'arrêt logique|character varying||m_mobilite.geo_mob_rurbain_la|
+|nom|libellé de l'arrêt logique|character varying||m_mobilite.geo_mob_rurbain_la|
+|n_lu1|numéro ligne urbaine passant à l'arrêt (1 à 6)|character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_1|
+|n_lu2|numéro ligne urbaine passant à l'arrêt (HM ou AE)|character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_lu_2|
+|n_djf|numéro ligne dimanche et jours fériés passant à l'arrêt (D1 et D2)|character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_djf|
+|n_tad|numéro ligne TAD passant à l'arrêt (13 à 20)|character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_tad|
+|n_pu|numéro ligne péri-urbaine passant à l'arrêt |character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_pu|
+|n_sco|numéro ligne scolaire passant à l'arrêt |character varying||x_apps_public.xappspublic_an_v_tic_la_gdpu_sco|
+|n_tic|formatage de l'affichage des n° de lignes passant à l'arrêt (ex : 1-4-AE)|character varying||concaténation des vues par type de réseau|
+|img_[n° de ligne]|champ contenant l'adresse url de l'image du numéro de ligne|character varying||par condition de n° de lignes passant à l'arrêt|
 
 
 Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation.
