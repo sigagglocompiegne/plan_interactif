@@ -197,6 +197,36 @@ Particularité(s) à noter : cette vue est construite à partir d'autres vues du
 
 Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation. Cette vue est également exploitée dans le FME permettant d'envoyer les données sur la base esclave (construction d'une autre table).
 
+
+`x_apps_public.xappspublic_an_mob_rurbain_passage` : Vue alphanumérique contenant le formatage des différents passage aux arrêts physiques.
+
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|id_en|identifiant du passage|integer||traitement FME|
+|id_ze|identifiant du poijnt d'arrêt physiques|character varying||traitement FME|
+|id_ligne|identifiant de la ligne|character varying||traitement FME|
+|date_sai|date de saisie|timestamp||traitement FME|
+|date_maj|date de mise à jour|timestamp||traitement FME|
+|op_sai|Opérateur de saisie|character varying||traitement FME|
+|t_passage|type de passage|character varying||traitement FME|
+|direction|code direction de la ligne|geometry(multilinestring,2154)||traitement FME|
+|fonct|fonctionnement de la ligne|geometry(multilinestring,2154)||traitement FME|
+|nom_direction|libellé de la direction|geometry(multilinestring,2154)||traitement FME|
+
+Particularité(s) à noter : cette table n'est pas stockée dans la base de production mais directement envoyée par un Workflow FME dans la base esclave.
+
+`x_apps_public.xappspublic_geo_mob_rurbain_ze` : Vue géographique contenant le formatage des différentes données aux points d'arrêt physique
+
+Cette table reprend la structure de la table m_mobilite.geo_mob_rurbain_ze complétée das tables x_apps_public.xappspublic_geo_v_tic_ze_gdplu et x_apps_public.xappspublic_an_v_tic_ze_gdpu.
+
+Particularité(s) à noter : cette table n'est pas stockée dans la base de production mais directement envoyée par un Workflow FME dans la base esclave.
+
+`x_apps_public.xappspublic_geo_mob_rurbain_la` : Vue géographique contenant le formatage des différentes données aux points d'arrêt logique
+
+Cette table reprend la structure de la table m_mobilite.geo_mob_rurbain_la complétée das tables x_apps_public.xappspublic_geo_v_tic_la_gdplu.
+
+Particularité(s) à noter : cette table n'est pas stockée dans la base de production mais directement envoyée par un Workflow FME dans la base esclave.
+
 `m_mobilite.geo_mob_rurbain_ze` : Donnée géographique des arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `m_mobilite.an_mob_rurbain_passage` : Donnée alphanumérique gérant les passages aux arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `m_mobilite.lt_mob_rurbain_terminus` : Liste de valeur contenant les lieux de terminus ou de passage intermédiaire du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
@@ -204,6 +234,7 @@ Particularité(s) à noter : cette vue est construite à partir d'autres vues du
 `m_mobilite.an_mob_rurbain_docligne` : Donnée alphanumérique contenant les documents relatifs aux lignes du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 
 Particularité(s) à noter : les données mobilités font l'objet de traitement particulier avant envoi à la base esclave (cf partie sur ETL en bas pour plus de détails).
+
 
 ---
 
@@ -345,17 +376,20 @@ Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveu
 
 |Nom de la ou des couches en entrée | Nom de la couche en sortie | mise à jour journalière |type d'envoi | traitement FME réalisé |
 |:---|:---|:---|:---|:---|
-|r_osm.geo_osm_commune_arcba||non|brute|aucun|
-|r_osm.geo_osm_masque_arcba||non|brute|aucun|
-|x_apps_public.x_appspublic_geo_v_adresse||oui|brute|aucun|
-|x_apps_public.x_appspublic_geo_vmr_adresse||oui|brute|aucun|
-|x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu||non|brute|aucun|
-|r_plan.geo_plan_refpoi||oui|brute|aucun|
-|r_plan.an_plan_refcontactpoi||oui|brute|aucun|
-|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu||non|après traitement|![picto](/doc/img/fme_tic_la.jpg)|
-|x_apps_public.xappspublic_geo_v_tic_la_tampon||non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
-|m_mobilite.geo_mob_rurbain_ze, x_apps_public.xappspublic_an_v_tic_ze_gdpu, x_apps_public.xappspublic_geo_v_tic_ze_gdpu|x_apps_public.xappspublic_an_mob_rurbain_passage|non|après traitement|![picto](/doc/img/fme_tic_ze.jpg)|
-|m_mobilite.an_mob_rurbain_passage, m_mobilite.lt_mob_rurbain_terminus|non|après traitement|![picto](/doc/img/fme_tic_passage.jpg)|
+|r_osm.geo_osm_commune_arcba|idem|non|brute|aucun|
+|r_osm.geo_osm_masque_arcba|idem|non|brute|aucun|
+|x_apps_public.x_appspublic_geo_v_adresse|idem|oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_adresse|idem|oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu|idem|non|brute|aucun|
+|r_plan.geo_plan_refpoi|idem|oui|brute|aucun|
+|r_plan.an_plan_refcontactpoi|idem|oui|brute|aucun|
+|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu|x_apps_public.xappspublic_geo_mob_rurbain_la|non|après traitement|![picto](/doc/img/fme_tic_la.jpg)|
+|x_apps_public.xappspublic_geo_v_tic_la_tampon|idem|non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
+|m_mobilite.geo_mob_rurbain_ze, x_apps_public.xappspublic_an_v_tic_ze_gdpu, x_apps_public.xappspublic_geo_v_tic_ze_gdpu|x_apps_public.xappspublic_geo_mob_rurbain_ze|non|après traitement|![picto](/doc/img/fme_tic_ze.jpg)|
+|m_mobilite.an_mob_rurbain_passage, m_mobilite.lt_mob_rurbain_terminus|x_apps_public.xappspublic_an_mob_rurbain_passage|non|après traitement|![picto](/doc/img/fme_tic_passage.jpg)|
+|m_mobilite.an_mob_rurbain_ligne|idem|non|brute||
+|m_mobilite.an_mob_rurbain_docligne|idem|non|brute||
+
 
 Aucune fiche de procédures n'a été réalisée.
 
