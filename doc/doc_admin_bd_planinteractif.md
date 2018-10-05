@@ -42,8 +42,43 @@ Particularité(s) à noter : aucune
 
 |Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
 |:---|:---|:---|:---|:---|
-
-
+|id_adresse|Identifiant de l'adresse|integer||r_objet.geo_objet_pt_adresse|
+|id_voie|Identifiant de la voie|integer||r_objet.geo_objet_pt_adresse|
+|id_tronc|Identifiant du tronçon|integer||r_objet.geo_objet_pt_adresse|
+|numero|numéro sur la voirie|character varying||r_adresse.an_adresse|
+|repet|indice de répétition|character varying||r_adresse.an_adresse|
+|complement|complément d'adresse|character varying||r_adresse.an_adresse|
+|angle|angle de positonnement de l'étiquette par rapport à la voie|character varying||r_adresse.an_adresse|
+|libvoie_c|indice de répétition|character varying||r_voie.an_voie|
+|insee|code insee de la commune|character varying||r_voie.an_voie|
+|codepostal|code postal|character varying||r_administratif.lk_insee_codepostal|
+|commune|Libellé de la commune|character varying||r_osm.geo_osm_commune|
+|rivoli|code rivoli|character varying||r_voie.an_voie|
+|rivoli_cle|cle rivoli|character varying||r_voie.an_voie|
+|mot_dir|mot directeur|character varying||r_voie.an_voie|
+|position|position du point adresse|character varying||r_objet.lt_position et r_objet.geo_objet_pt_adresse|
+|dest_adr|destination de l'adresse|character varying||r_adresse.lt_dest_adr et r_adresse.an_adresse_info|
+|etat_adr|état de l'adresse|character varying||r_adresse.lt_etat_adr et r_adresse.an_adresse_info|
+|refcad|référence cadastrale|character varying||r_adresse.an_adresse_info|
+|nb_log|nombre de logements|character varying||r_adresse.an_adresse_info|
+|refcad|référence cadastrale|character varying||r_adresse.an_adresse_info|
+|pc|numéro de permis de construire|character varying||r_adresse.an_adresse_info|
+|groupee|information si l'adresse est groupée ou non|character varying||r_adresse.lt_groupee et r_adresse.an_adresse_info|
+|secondaire|information si l'adresse est une adresse seondaire|character varying||r_adresse.lt_secondaire et r_adresse.an_adresse_info|
+|src_adr|source de l'adresse|character varying||r_adresse.lt_src_adr et r_adresse.an_adresse|
+|src_geom|référentiel géographique de saisie du point d'adresse |character varying||r_objet.lt_src_geom et r_objet.geo_objet_pt_adresse|
+|src_date|date du référentiel géographique|character varying||r_objet.geo_objet_pt_adresse|
+|date_sai|date de saisie|character varying||r_objet.geo_objet_pt_adresse|
+|date_maj|date de mise à jour|character varying||r_objet.geo_objet_pt_adresse|
+|observ|observations diverses|character varying||r_adresse.an_adresse|
+|diag_adr|diagnostic de l'adresse|character varying||r_adresse.lt_diag_adr et r_adresse.an_adresse|
+|qual_adr|qualité de l'adresse|character varying||r_adresse.lt_qual_adr et r_adresse.an_adresse|
+|id_ext1|identifiant base externe 1|character varying||r_adresse.an_adresse_info|
+|id_ext2|identifiant base externe 2|character varying||r_adresse.an_adresse_info|
+|x_l93|coordonnées X du point d'adresse en Lambert 93|character varying||r_adresse.an_adresse_info|
+|y_l93|coordonnées Y du point d'adresse en Lambert 93|character varying||r_adresse.an_adresse_info|
+|verif_base|information sur le fait que les données ont été vérifiées|character varying||r_adresse.an_adresse|
+|geom|géométrie du point|geometry(point,2154)||r_objet.geo_objet_pt_adresse|
 
 Particularité(s) à noter : aucune
 
