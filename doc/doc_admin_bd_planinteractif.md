@@ -160,7 +160,9 @@ Particularité(s) à noter : cette vue est construite à partir d'autres vues du
 
 |Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
 |:---|:---|:---|:---|:---|
-|id_ze|Identifiant du point d'arrêt physique|character varying||m_mobilite.geo_mob_rurbain_ze|
+|geom2|géométrie des objets|geometry(multipolygon,2154)||m_mobilite.geo_mob_rurbain_la|
+
+Particularité(s) à noter : cette vue reprend les éléments de la table m_mobilite.geo_mob_rurbain_la sauf pour la géométrie qui est un tampon autour du point d'arrêt définit par la valeur contenue dans le champ `v_tampon`
 
 `x_apps_public.xappspublic_an_v_tic_ze_gdplu` : Vue alphanumérique contenant les données spécifiques pré-traitées (affichage des numéros de lignes par étiquette ou image des n° de lignes par arrêts)  sur les arrêts physiques sur l'Agglomération de la Région de Compiègne pour affichage dans l'application.
 
