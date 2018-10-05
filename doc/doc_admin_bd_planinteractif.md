@@ -160,7 +160,7 @@ Particularité(s) à noter : cette vue est construite à partir d'autres vues du
 
 |Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
 |:---|:---|:---|:---|:---|
-|geom2|géométrie des objets|geometry(multipolygon,2154)||m_mobilite.geo_mob_rurbain_la|
+|geom2|géométrie des objets|geometry(polygon,2154)||m_mobilite.geo_mob_rurbain_la|
 
 Particularité(s) à noter : cette vue reprend les éléments de la table m_mobilite.geo_mob_rurbain_la sauf pour la géométrie qui est un tampon autour du point d'arrêt définit par la valeur contenue dans le champ `v_tampon`
 
@@ -209,15 +209,40 @@ Particularité(s) à noter : aucune
 
 `x_apps_public.xappspublic_geo_v_dec_pav_tampon_gdplu` : Vue géographique contenant les tampons correspondant à l'aire d'influence du conteneur à verre (en théorie) sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|id_contver|Identifiant du conteneur|integer||m_dechet.geo_dec_pav_verre|
+|v_tampon|Valeur du tampon|integer||m_dechet.geo_dec_pav_verre|
+|date_effet|date de prise en compte de ce tampon|date||m_dechet.geo_dec_pav_verre|
+|geom2|géométrie des objets|geometry(polygon,2154)||m_dechet.geo_dec_pav_verre|
+
+Particularité(s) à noter : certains tampons ont pu être modifiés pour s'adapter à l'emprise. lors de l'automatisation d'envoies des données (car le service déchet est autonome), cette vue n'est plus utilisée. Elle est remplacée par un traitement dans FME qui va déterminer les 2 conteneurs les plus proches de l'adresse sélectionnée (cf partie ETL plus bas pour plus d'informations).
 
 `x_apps_public.xappspublic_geo_v_dec_pav_tlc_tampon_gdplu` : Vue géographique contenant les tampons correspondant à l'aire d'influence du conteneur TLC (en théorie) sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|id_cont_tl|Identifiant du conteneur|integer||m_dechet.geo_dec_pav_tlc|
+|v_tampon|Valeur du tampon|integer||m_dechet.geo_dec_pav_tlc|
+|date_effet|date de prise en compte de ce tampon|date||m_dechet.geo_dec_pav_tlc|
+|geom2|géométrie des objets|geometry(polygon,2154)||m_dechet.geo_dec_pav_tlc|
+
+Particularité(s) à noter : certains tampons ont pu être modifiés pour s'adapter à l'emprise. lors de l'automatisation d'envoies des données (car le service déchet est autonome), cette vue n'est plus utilisée. Elle est remplacée par un traitement dans FME qui va déterminer les 2 conteneurs les plus proches de l'adresse sélectionnée (cf partie ETL plus bas pour plus d'informations).
 
 `x_apps_public.xappspublic_geo_v_dec_secteur_enc_secteur` : Vue géométrique contenant les secteurs de rammassage des encombrants  sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||m_dechet.geo_dec_secteur_enc|
+|insee|code insee|character varying||m_dechet.geo_dec_secteur_enc|
+|commune|libellé de la commune|character varying||m_dechet.geo_dec_secteur_enc|
+|adresse|adresse concernée|character varying||m_dechet.geo_dec_secteur_enc|
+|l_secteur|type de secteur|character varying||m_dechet.geo_dec_secteur_enc|
+|l_message1|message 1 pour affichage dans GEO|character varying||m_dechet.geo_dec_secteur_enc|
+|l_message2|mpassage 2 pour affichage dans GEO|character varying||m_dechet.geo_dec_secteur_enc|
+|geom|gémétrie des objets|geometry(polygon,2154)||m_dechet.geo_dec_secteur_enc|
+
+Particularité(s) à noter : une adresse spécifique peut-être un secteur car sur Compiègne il y a des particularités liées à la collecte.
 
 ---
 
