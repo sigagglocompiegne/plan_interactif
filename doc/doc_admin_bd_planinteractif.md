@@ -40,7 +40,10 @@ Particularité(s) à noter : aucune
 
 `x_apps_public.xappspublic_geo_v_adresse` : Vue géographique des adresses sur le Pays Compiégnois filtrée dans l'application sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+
+
 
 Particularité(s) à noter : aucune
 
