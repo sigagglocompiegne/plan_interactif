@@ -140,7 +140,12 @@ Particularité(s) à noter : aucune
 `m_mobilite.geo_mob_rurbain_la` : Donnée géographique des arrêts logiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `x_apps_public.xappspublic_an_v_tic_la_gdplu` : Vue alphanumérique contenant les données spécifiques pré-traitées sur les arrêts logiques sur l'Agglomération de la Région de Compiègne.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||row_number|
+
+
+Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation.
 
 `x_apps_public.xappspublic_geo_v_tic_la_tampon` : Vue géographique contenant les tampons correspondant aux périmètres d'attraction d'un arrêt de bus pour remonter dans l'applicatif Grand Public les lignes desservant les adresses ou les équipements sur l'Agglomération de la Région de Compiègne.
 
