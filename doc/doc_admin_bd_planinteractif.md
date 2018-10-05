@@ -343,18 +343,19 @@ Sans objet
 Un worflow FME a été réalisé permettant de gérer l'envoi automatique des données vers la base esclave. Il est stockée ici Y:\Ressources\4-Partage\3-Procedures\FME\prod\APPS_GB_PUBLIC\PLAN_INTERACTIF.fmw.
 Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveur sig-applis.
 
-|Nom de la couche | mise à jour journalière |type d'envoi | traitement FME réalisé |
-|:---|:---|:---|:---|
-|r_osm.geo_osm_commune_arcba|non|brute|aucun|
-|r_osm.geo_osm_masque_arcba|non|brute|aucun|
-|x_apps_public.x_appspublic_geo_v_adresse|oui|brute|aucun|
-|x_apps_public.x_appspublic_geo_vmr_adresse|oui|brute|aucun|
-|x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu|non|brute|aucun|
-|r_plan.geo_plan_refpoi|oui|brute|aucun|
-|r_plan.an_plan_refcontactpoi|oui|brute|aucun|
-|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu|non|après traitement|![picto](/doc/img/fme_tic_la.jpg)|
-|x_apps_public.xappspublic_geo_v_tic_la_tampon|non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
-|m_mobilite.geo_mob_rurbain_ze, x_apps_public.xappspublic_an_v_tic_ze_gdpu, x_apps_public.xappspublic_geo_v_tic_ze_gdpu|non|après traitement|![picto](/doc/img/fme_tic_ze.jpg)|
+|Nom de la ou des couches en entrée | Nom de la couche en sortie | mise à jour journalière |type d'envoi | traitement FME réalisé |
+|:---|:---|:---|:---|:---|
+|r_osm.geo_osm_commune_arcba||non|brute|aucun|
+|r_osm.geo_osm_masque_arcba||non|brute|aucun|
+|x_apps_public.x_appspublic_geo_v_adresse||oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_adresse||oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu||non|brute|aucun|
+|r_plan.geo_plan_refpoi||oui|brute|aucun|
+|r_plan.an_plan_refcontactpoi||oui|brute|aucun|
+|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu||non|après traitement|![picto](/doc/img/fme_tic_la.jpg)|
+|x_apps_public.xappspublic_geo_v_tic_la_tampon||non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
+|m_mobilite.geo_mob_rurbain_ze, x_apps_public.xappspublic_an_v_tic_ze_gdpu, x_apps_public.xappspublic_geo_v_tic_ze_gdpu|x_apps_public.xappspublic_an_mob_rurbain_passage|non|après traitement|![picto](/doc/img/fme_tic_ze.jpg)|
+|m_mobilite.an_mob_rurbain_passage, m_mobilite.lt_mob_rurbain_terminus|non|après traitement|![picto](/doc/img/fme_tic_passage.jpg)|
 
 Aucune fiche de procédures n'a été réalisée.
 
