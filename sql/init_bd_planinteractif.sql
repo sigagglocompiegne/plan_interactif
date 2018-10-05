@@ -2304,6 +2304,240 @@ GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO sig_create;
 GRANT ALL ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO create_sig;
 GRANT SELECT ON TABLE x_apps_public.xappspublic_an_v_tic_ze_gdpu_tad TO read_sig;
 
+-- ************************************************************************************************************************
+-- *** MOBILITE (ZE bis)
+-- ************************************************************************************************************************
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu AS
+ SELECT ze.id_ze,
+    ze.nom,
+    lu.ligne_urbaine,
+    djf.ligne_djf,
+    pu.ligne_pu,
+    tad.ligne_tad,
+    sco.ligne_sco,
+    ze.geom
+   FROM m_mobilite.geo_mob_rurbain_ze ze
+     LEFT JOIN x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu lu ON ze.id_ze::text = lu.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf djf ON ze.id_ze::text = djf.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu pu ON ze.id_ze::text = pu.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad tad ON ze.id_ze::text = tad.id_ze::text
+     LEFT JOIN x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco sco ON ze.id_ze::text = sco.id_ze::text
+  WHERE ze.statut::text = '10'::text;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu
+    IS 'Vue géométrique des zones d''embarquement avec les lignes en desserte du réseau TIC (intégré  au FME d''export pour exploitation dans l''application grand public Plan d''Agglomération Interactif (fiche information))';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu TO read_sig;
+
+-- ******************************************************************
+-- la vue précédente est possible car les vues ci-dessous existent
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf AS
+ WITH req_ze AS (
+         SELECT geo_mob_rurbain_ze.id_ze,
+            geo_mob_rurbain_ze.nom,
+            geo_mob_rurbain_ze.geom
+           FROM m_mobilite.geo_mob_rurbain_ze
+          WHERE geo_mob_rurbain_ze.statut::text = '10'::text
+        ), req_desserte_djf AS (
+         SELECT DISTINCT p.id_ze,
+            (l.nom_court::text || ' vers '::text) || t.valeur::text AS nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p
+             LEFT JOIN m_mobilite.an_mob_rurbain_ligne l ON p.id_ligne::text = l.id_ligne::text
+             LEFT JOIN m_mobilite.lt_mob_rurbain_terminus t ON p.direction::text = t.code::text
+          WHERE l.genre::text = '10'::text AND (l.nom_court::text = 'D1'::text OR l.nom_court::text = 'D2'::text) AND (p.t_passage::text = '22'::text OR p.t_passage::text = '10'::text OR p.t_passage::text = '32'::text OR p.t_passage::text = '40'::text)
+          ORDER BY p.id_ze
+        )
+ SELECT DISTINCT req_ze.id_ze,
+    req_ze.nom,
+    replace(replace(replace(replace(array_agg(req_desserte_djf.nom_court ORDER BY req_desserte_djf.nom_court)::text, '"'::text, ''::text), '}'::text, ''::text), '{'::text, ''::text), ','::text, chr(10))::character varying(500) AS ligne_djf,
+    req_ze.geom
+   FROM req_ze,
+    req_desserte_djf
+  WHERE req_ze.id_ze::text = req_desserte_djf.id_ze::text
+  GROUP BY req_ze.id_ze, req_ze.nom, req_ze.geom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf
+    IS 'Vue géométrique formattant pour chaque ZE le n° de ligne et sa direction pour les lignes Dimanche et jours fériés. Cette vue permet de générer la vue geo_v_tic_ze_gdpu (export shape via FME) pour la gestion de l ''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf TO read_sig;
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu AS
+ WITH req_ze AS (
+         SELECT geo_mob_rurbain_ze.id_ze,
+            geo_mob_rurbain_ze.nom,
+            geo_mob_rurbain_ze.geom
+           FROM m_mobilite.geo_mob_rurbain_ze
+          WHERE geo_mob_rurbain_ze.statut::text = '10'::text
+        ), req_desserte_lu AS (
+         SELECT DISTINCT p.id_ze,
+            (l.nom_court::text || ' vers '::text) || t.valeur::text AS nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p
+             LEFT JOIN m_mobilite.an_mob_rurbain_ligne l ON p.id_ligne::text = l.id_ligne::text
+             LEFT JOIN m_mobilite.lt_mob_rurbain_terminus t ON p.direction::text = t.code::text
+          WHERE l.genre::text = '10'::text AND l.nom_court::text <> 'D1'::text AND l.nom_court::text <> 'D2'::text AND (p.t_passage::text = '22'::text OR p.t_passage::text = '10'::text OR p.t_passage::text = '31'::text OR p.t_passage::text = '40'::text)
+          ORDER BY p.id_ze
+        )
+ SELECT DISTINCT req_ze.id_ze,
+    req_ze.nom,
+    replace(replace(replace(replace(array_agg(req_desserte_lu.nom_court ORDER BY req_desserte_lu.nom_court)::text, '"'::text, ''::text), '}'::text, ''::text), '{'::text, ''::text), ','::text, chr(10))::character varying(500) AS ligne_urbaine,
+    req_ze.geom
+   FROM req_ze,
+    req_desserte_lu
+  WHERE req_ze.id_ze::text = req_desserte_lu.id_ze::text
+  GROUP BY req_ze.id_ze, req_ze.nom, req_ze.geom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu
+    IS 'Vue géométrique formattant pour chaque ZE le n° de ligne et sa direction pour les lignes urbaines. Cette vue permet de générer la vue geo_v_tic_ze_gdpu (export shape via FME) pour la gestion de l ''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu TO read_sig;
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu AS
+ WITH req_ze AS (
+         SELECT geo_mob_rurbain_ze.id_ze,
+            geo_mob_rurbain_ze.nom,
+            geo_mob_rurbain_ze.geom
+           FROM m_mobilite.geo_mob_rurbain_ze
+          WHERE geo_mob_rurbain_ze.statut::text = '10'::text
+        ), req_desserte_pu AS (
+         SELECT DISTINCT p.id_ze,
+            (l.nom_court::text || ' '::text) || t.valeur::text AS nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p
+             LEFT JOIN m_mobilite.an_mob_rurbain_ligne l ON p.id_ligne::text = l.id_ligne::text
+             LEFT JOIN m_mobilite.lt_mob_rurbain_terminus t ON p.direction::text = t.code::text
+          WHERE l.genre::text = '20'::text AND (p.t_passage::text = '22'::text OR p.t_passage::text = '10'::text OR p.t_passage::text = '31'::text OR p.t_passage::text = '40'::text)
+          ORDER BY p.id_ze
+        )
+ SELECT DISTINCT req_ze.id_ze,
+    req_ze.nom,
+    replace(replace(replace(replace(array_agg(req_desserte_pu.nom_court ORDER BY req_desserte_pu.nom_court)::text, '"'::text, ''::text), '}'::text, ''::text), '{'::text, ''::text), ','::text, chr(10))::character varying(500) AS ligne_pu,
+    req_ze.geom
+   FROM req_ze,
+    req_desserte_pu
+  WHERE req_ze.id_ze::text = req_desserte_pu.id_ze::text
+  GROUP BY req_ze.id_ze, req_ze.nom, req_ze.geom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu
+    IS 'Vue géométrique formattant pour chaque ZE le n° de ligne et sa direction pour les lignes péri-urbaines. Cette vue permet de générer la vue geo_v_tic_ze_gdpu (export shape via FME) pour la gestion de l''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu TO read_sig;
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco AS
+ WITH req_ze AS (
+         SELECT geo_mob_rurbain_ze.id_ze,
+            geo_mob_rurbain_ze.nom,
+            geo_mob_rurbain_ze.geom
+           FROM m_mobilite.geo_mob_rurbain_ze
+          WHERE geo_mob_rurbain_ze.statut::text = '10'::text
+        ), req_desserte_pu AS (
+         SELECT DISTINCT p.id_ze,
+            (l.nom_court::text || ' Vers '::text) || t.valeur::text AS nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p
+             LEFT JOIN m_mobilite.an_mob_rurbain_ligne l ON p.id_ligne::text = l.id_ligne::text
+             LEFT JOIN m_mobilite.lt_mob_rurbain_terminus t ON p.direction::text = t.code::text
+          WHERE l.genre::text = '40'::text AND (p.t_passage::text = '22'::text OR p.t_passage::text = '10'::text OR p.t_passage::text = '31'::text OR p.t_passage::text = '40'::text)
+          ORDER BY p.id_ze
+        )
+ SELECT DISTINCT req_ze.id_ze,
+    req_ze.nom,
+    replace(replace(replace(replace(array_agg(req_desserte_pu.nom_court ORDER BY req_desserte_pu.nom_court)::text, '"'::text, ''::text), '}'::text, ''::text), '{'::text, ''::text), ','::text, chr(10))::character varying(500) AS ligne_sco,
+    req_ze.geom
+   FROM req_ze,
+    req_desserte_pu
+  WHERE req_ze.id_ze::text = req_desserte_pu.id_ze::text
+  GROUP BY req_ze.id_ze, req_ze.nom, req_ze.geom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco
+    IS 'Vue géométrique formattant pour chaque ZE le n° de ligne et sa direction pour les lignes scolaires. Cette vue permet de générer la vue geo_v_tic_ze_gdpu (export shape via FME) pour la gestion de l''affichage de la fiche info dans l''application grand public Plan d''''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco TO read_sig;
+
+-- View: x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad AS
+ WITH req_ze AS (
+         SELECT geo_mob_rurbain_ze.id_ze,
+            geo_mob_rurbain_ze.nom,
+            geo_mob_rurbain_ze.geom
+           FROM m_mobilite.geo_mob_rurbain_ze
+          WHERE geo_mob_rurbain_ze.statut::text = '10'::text
+        ), req_desserte_pu AS (
+         SELECT DISTINCT p.id_ze,
+            (l.nom_court::text || ' Vers '::text) || t.valeur::text AS nom_court
+           FROM m_mobilite.an_mob_rurbain_passage p
+             LEFT JOIN m_mobilite.an_mob_rurbain_ligne l ON p.id_ligne::text = l.id_ligne::text
+             LEFT JOIN m_mobilite.lt_mob_rurbain_terminus t ON p.direction::text = t.code::text
+          WHERE l.genre::text = '30'::text AND (p.t_passage::text = '22'::text OR p.t_passage::text = '10'::text OR p.t_passage::text = '31'::text OR p.t_passage::text = '40'::text)
+          ORDER BY p.id_ze
+        )
+ SELECT DISTINCT req_ze.id_ze,
+    req_ze.nom,
+    replace(replace(replace(replace(array_agg(req_desserte_pu.nom_court ORDER BY req_desserte_pu.nom_court)::text, '"'::text, ''::text), '}'::text, ''::text), '{'::text, ''::text), ','::text, chr(10))::character varying(500) AS ligne_tad,
+    req_ze.geom
+   FROM req_ze,
+    req_desserte_pu
+  WHERE req_ze.id_ze::text = req_desserte_pu.id_ze::text
+  GROUP BY req_ze.id_ze, req_ze.nom, req_ze.geom;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad
+    IS 'Vue géométrique formattant pour chaque ZE le n° de ligne et sa direction pour les lignes AlloTic. Cette vue permet de générer la vue geo_v_tic_ze_gdpu (export shape via FME) pour la gestion de l''affichage de la fiche info dans l''application grand public Plan d''Agglo interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad TO read_sig;
+
+
 
 -- ************************************************************************************************************************
 -- *** MOBILITE (Tampon LA)
