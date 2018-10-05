@@ -352,7 +352,7 @@ Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveu
 |x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu|non|brute|aucun|
 |r_plan.geo_plan_refpoi|oui|brute|aucun|
 |r_plan.an_plan_refcontactpoi|oui|brute|aucun|
-|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu|non|après traitement||
+|m_mobilite.geo_mob_rurbain_la, x_apps_public.xappspublic_an_v_tic_la_gdpu|non|après traitement|![picto](/doc/img/fme_tic_la.jpg)|
 |x_apps_public.xappspublic_geo_v_tic_la_tampon|non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
 
 Aucune fiche de procédures n'a été réalisée.
