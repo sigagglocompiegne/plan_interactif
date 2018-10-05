@@ -344,7 +344,7 @@ Un worflow FME a été réalisé permettant de gérer l'envoi automatique des do
 Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveur sig-applis.
 
 |Nom de la couche | mise à jour journalière |type d'envoi | traitement FME réalisé |
-|:---|:---|:---|
+|:---|:---|:---|:---|:---|
 |r_osm.geo_osm_commune_arcba|non|brute|aucun|
 |r_osm.geo_osm_masque_arcba|non|brute|aucun|
 |x_apps_public.x_appspublic_geo_v_adresse|oui|brute|aucun|
