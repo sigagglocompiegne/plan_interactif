@@ -2528,6 +2528,103 @@ GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO sig_cre
 GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO create_sig;
 GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_carte_scolaire_ele TO read_sig;
 
+-- ************************************************************************************************************************
+-- *** Fibre optique
+-- ************************************************************************************************************************
 
+-- View: x_apps_public.xappspublic_geo_v_fo_sfr_pm
+
+-- DROP VIEW x_apps_public.xappspublic_geo_v_fo_sfr_pm;
+
+CREATE OR REPLACE VIEW x_apps_public.xappspublic_geo_v_fo_sfr_pm AS
+ WITH req_pm AS (
+         SELECT geo_fo_sfr_pm.gid,
+            geo_fo_sfr_pm.id_sro,
+            geo_fo_sfr_pm.date_int,
+            geo_fo_sfr_pm.date_maj,
+            geo_fo_sfr_pm.insee,
+            geo_fo_sfr_pm.commune,
+            geo_fo_sfr_pm.id_pm,
+            geo_fo_sfr_pm.l_annee,
+            geo_fo_sfr_pm.l_zone,
+            geo_fo_sfr_pm.l_adresse,
+            geo_fo_sfr_pm.l_statut,
+            geo_fo_sfr_pm.l_nbpri_previ,
+            geo_fo_sfr_pm.l_nbprisout_previ,
+            geo_fo_sfr_pm.l_nbpriaer_previ,
+            geo_fo_sfr_pm.l_nbprifac_previ,
+            geo_fo_sfr_pm.l_nbpri_reel,
+            geo_fo_sfr_pm.l_nbprisout_reel,
+            geo_fo_sfr_pm.l_nbpriaer_reel,
+            geo_fo_sfr_pm.l_nbprifac_reel,
+            geo_fo_sfr_pm.l_date_rac_nro AS l_date_rac,
+            geo_fo_sfr_pm.l_date_maj,
+            geo_fo_sfr_pm.geom1 AS geom,
+            geo_fo_sfr_pm.l_role,
+            geo_fo_sfr_pm.l_g2r_nro,
+            geo_fo_sfr_pm.observ,
+            geo_fo_sfr_pm.l_secteur,
+            geo_fo_sfr_pm.l_eligibilite,
+            geo_fo_sfr_pm.l_eligibilite_url,
+            geo_fo_sfr_pm.l_message,
+            geo_fo_sfr_pm.l_date_pose,
+            geo_fo_sfr_pm.l_date_rac_zapm,
+            geo_fo_sfr_pm.l_date_j3m,
+            geo_fo_sfr_pm.l_nbpripav_reel,
+            geo_fo_sfr_pm.l_nbpricoll_reel,
+            geo_fo_sfr_pm.l_date_dj3m
+           FROM m_reseau_sec.geo_fo_sfr_pm
+        ), req_dmaj AS (
+         SELECT max(geo_fo_sfr_pm.date_maj) AS mdate_maj
+           FROM m_reseau_sec.geo_fo_sfr_pm
+        )
+ SELECT req_pm.gid,
+    req_pm.id_sro,
+    req_pm.date_int,
+    req_pm.date_maj,
+    req_pm.insee,
+    req_pm.commune,
+    req_pm.id_pm,
+    req_pm.l_annee,
+    req_pm.l_zone,
+    req_pm.l_adresse,
+    req_pm.l_statut,
+    req_pm.l_nbpri_previ,
+    req_pm.l_nbprisout_previ,
+    req_pm.l_nbpriaer_previ,
+    req_pm.l_nbprifac_previ,
+    req_pm.l_nbpri_reel,
+    req_pm.l_nbprisout_reel,
+    req_pm.l_nbpriaer_reel,
+    req_pm.l_nbprifac_reel,
+    req_pm.l_date_rac,
+    req_pm.l_date_maj,
+    req_pm.geom,
+    req_pm.l_role,
+    req_pm.l_g2r_nro,
+    req_pm.observ,
+    req_pm.l_secteur,
+    req_pm.l_eligibilite,
+    req_pm.l_eligibilite_url,
+    req_pm.l_message,
+    req_pm.l_date_pose,
+    req_pm.l_date_rac_zapm,
+    req_pm.l_date_j3m,
+    req_pm.l_nbpripav_reel,
+    req_pm.l_nbpricoll_reel,
+    req_pm.l_date_dj3m,
+    req_dmaj.mdate_maj
+   FROM req_pm,
+    req_dmaj;
+
+ALTER TABLE x_apps_public.xappspublic_geo_v_fo_sfr_pm
+    OWNER TO sig_create;
+COMMENT ON VIEW x_apps_public.xappspublic_geo_v_fo_sfr_pm
+    IS 'Vue de consultation uniquement sur les secteurs de PM pour export dans l''application Grand Public Plan interactif';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE x_apps_public.xappspublic_geo_v_fo_sfr_pm TO edit_sig;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_fo_sfr_pm TO sig_create;
+GRANT ALL ON TABLE x_apps_public.xappspublic_geo_v_fo_sfr_pm TO create_sig;
+GRANT SELECT ON TABLE x_apps_public.xappspublic_geo_v_fo_sfr_pm TO read_sig;
 
 
