@@ -11,4 +11,4 @@ Les données exploitées sont soient transférées en l'état ou soient retravai
 
 ## Schéma fonctionnel
 
-![schema_fonctionnel](img/schema_fonctionnel_docurba.png)
+![schema_fonctionnel](img/ProcédureGEO_PlanInteractif.png)
