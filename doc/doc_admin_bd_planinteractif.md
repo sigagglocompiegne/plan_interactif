@@ -22,31 +22,55 @@ Les dépendances sont liées à chaque donnée transférée.
 
 L'ensemble des classes d'objets de gestion sont stockés pour la plupart dans le schéma x_apps_public. Certaines peuvent être conservées dans les schémas métiers de chaque donnée dans le cas d'un transfert de la donnée brute.
 
- ### classes d'objets des données brutes :
+ ### classes d'objets des données brutes et des vues applicatives :
  
-`geo_a_habillage_pct` : (archive) Donnée géographique contenant l'habillage ponctuel des documents d'urbanisme locaux (PLUi, PLU, CC) sur le modèle du standard CNIG 2017
-
-|Nom attribut | Définition | Type  | Valeurs par défaut |
-|:---|:---|:---|:---|  
-|idhab|Identifiant unique de l'habillage ponctuel|character varying(10)| |
-
+ La structure des tables ou des vues ne sera pas détaillée ici puisque qu'il s'agit d'une exploitation brute de données existantes gérées pour d'autres usages. Seules les vues applicatives pourront faire l'objet d'un détail de leur structure.
+ 
+`r_osm.geo_v_osm_commune_arcba` : Donnée géographique des limites communales de l'Agglomération de la Région de Compiègne
 
 Particularité(s) à noter : aucune
 
 ---
 
+`r_osm.geo_osm_masque_arcba` : Donnée géographique générant un polygone à trou sur l'Agglomération de la Région de Compiègne pour créer un effet masque sur les territroires périphériques.
 
-`an_v_docurba_arcba` : Vue ARC simplifiée de la table an_doc_urba à usage interne. Ajout nom de la commune et du libellé de l'état du document
-
+Particularité(s) à noter : aucune
 
 ---
 
- ### classes d'objets applicatives sont classés dans le schéma x_apps_public :
+`r_plan.geo_plan_refpoi` : Donnée géographique des POI sur l'Agglomération de la Région de Compiègne.
+`r_plan.an_plan_refcontactpoi` : Donnée alphanumérique des contacts des POI sur l'Agglomération de la Région de Compiègne.
 
- 
-`xapps_an_vmr_p_information` : Vue matérialisée alphanumérique formatant une liste des parcelles avec les informations ponctuelles, surfaciques (hors DPU et ZAD), linénaires issues des documents d'urbanisme et d'autres informations jugées utiles issues d'autres données métiers (Natura 2000,ZICO, ZNIEFF, ...) impactant chaque parcelle. Cette vue est liée dans GEO pour récupération de ces informations dans la fiche de renseignements d'urbanisme (cf dossier GitHub correspondant à l'application).
+Particularité(s) à noter : aucune
 
+---
 
+`m_mobilite.geo_mob_rurbain_la` : Donnée géographique des arrêts logiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`m_mobilite.geo_mob_rurbain_ze` : Donnée géographique des arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`m_mobilite.an_mob_rurbain_passage` : Donnée alphanumérique gérant les passages aux arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`m_mobilite.lt_mob_rurbain_terminus` : Liste de valeur contenant les lieux de terminus ou de passage intermédiaire du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`m_mobilite.an_mob_rurbain_ligne` : Donnée alphanumérique contenant la liste des lignes du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+`m_mobilite.an_mob_rurbain_docligne` : Donnée alphanumérique contenant les documents relatifs aux lignes du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
+
+Particularité(s) à noter : les données mobilités font l'objet de traitement particulier avant envoi à la base esclave (cf partie sur ETL en bas pour plus de détails).
+
+---
+
+`m_mobilite.geo_mob_3v_station` : Donnée géographique contenant la localisation des stationnements pour vélo sur l'Agglomération de la Région de Compiègne(TIC).
+`m_tourisme.geo_tou_depart_rando` : Donnée géographique contenant la localisation des départs de randonnées sur l'Agglomération de la Région de Compiègne(TIC).
+
+Particularité(s) à noter : aucune
+
+---
+
+`m_dechet.geo_dec_pav_verre` : Donnée géographique contenant la localisation des conteneurs verres sur l'Agglomération de la Région de Compiègne(TIC).
+`m_dechet.geo_dec_pav_tlc` : Donnée géographique contenant la localisation des conteneurs textiles, lignes, chaussures sur l'Agglomération de la Région de Compiègne(TIC).
+`m_dechet.an_dec_pav_doc_media` : Donnée alphnaumérique contenant les documents joints aux conteneurs (photos) sur l'Agglomération de la Région de Compiègne(TIC).
+`m_dechet.geo_dec_secteur_om` : Donnée géoégraphique contenant les secteurs de ramassage des ordures ménagères sur l'Agglomération de la Région de Compiègne(TIC).
+
+Particularité(s) à noter : aucune
+
+---
 
 ## Liste de valeurs
 
