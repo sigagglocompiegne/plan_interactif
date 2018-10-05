@@ -26,6 +26,9 @@ L'ensemble des classes d'objets de gestion sont stockés pour la plupart dans le
  
  La structure des tables ou des vues ne sera pas détaillée ici puisque qu'il s'agit d'une exploitation brute de données existantes gérées pour d'autres usages. Seules les vues applicatives pourront faire l'objet d'un détail de leur structure.
  
+ 
+- limites adminsitratives :
+
 `r_osm.geo_v_osm_commune_arcba` : Donnée géographique des limites communales de l'Agglomération de la Région de Compiègne
 
 Particularité(s) à noter : aucune
