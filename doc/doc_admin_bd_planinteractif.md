@@ -154,7 +154,7 @@ Particularité(s) à noter : aucune
 |n_tic|formatage de l'affichage des n° de lignes passant à l'arrêt (ex : 1-4-AE)|character varying||concaténation des vues par type de réseau|
 |img_[n° de ligne]|champ contenant l'adresse url de l'image du numéro de ligne|character varying||par condition de n° de lignes passant à l'arrêt inscrit en dure l'url|
 
-Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation.
+Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation. Cette vue est également exploitée dans le FME permettant d'envoyer les données sur la base esclave (construction d'une autre table).
 
 `x_apps_public.xappspublic_geo_v_tic_la_tampon` : Vue géographique contenant les tampons correspondant aux périmètres d'attraction d'un arrêt de bus pour remonter dans l'applicatif Grand Public les lignes desservant les adresses ou les équipements sur l'Agglomération de la Région de Compiègne.
 
@@ -178,6 +178,24 @@ Particularité(s) à noter : cette vue reprend les éléments de la table m_mobi
 |n_sco|numéro ligne scolaire passant à l'arrêt |character varying||x_apps_public.xappspublic_an_v_tic_ze_gdpu_sco|
 |n_tic|formatage de l'affichage des n° de lignes passant à l'arrêt (ex : 1-4-AE)|character varying||concaténation des vues par type de réseau|
 |img_[n° de ligne]|champ contenant l'adresse url de l'image du numéro de ligne|character varying||par condition de n° de lignes passant à l'arrêt inscrit en dure l'url|
+
+Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation. Cette vue est également exploitée dans le FME permettant d'envoyer les données sur la base esclave (construction d'une autre table).
+
+
+`x_apps_public.xappspublic_geo_v_tic_ze_gdplu` : Vue géométrique des arrêts physiques avec les lignes en desserte du réseau TIC sur l'Agglomération de la Région de Compiègne.
+
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|id_ze|identifiant du point d'arrêt|character varying||m_mobilite.geo_mob_rurbain_ze|
+|nom|libellé du point d'arrêt|character varying||m_mobilite.geo_mob_rurbain_ze|
+|ligne_urbaine|numéro des lignes urbaines en desserte|character varying||x_apps_public.xappspublic_geo_v_tic_ze_gdpu_lu|
+|ligne_djf|numéro des lignes dimanches et jours fériés en desserte|character varying||x_apps_public.xappspublic_geo_v_tic_ze_gdpu_djf|
+|ligne_pu|numéro des lignes péri-urbaine en desserte|character varying||x_apps_public.xappspublic_geo_v_tic_ze_gdpu_pu|
+|ligne_tad|numéro des lignes TAD en desserte|character varying||x_apps_public.xappspublic_geo_v_tic_ze_gdpu_tad|
+|ligne_sco|numéro des lignes scolaires en desserte|character varying||x_apps_public.xappspublic_geo_v_tic_ze_gdpu_sco|
+|geom|géométrie des objets|geometry(multilinestring,2154)||m_mobilite.geo_mob_rurbain_ze|
+
+Particularité(s) à noter : cette vue est construite à partir d'autres vues du schéma x_apps_public. Leurs structures ne sont pas détaillées ici mais leurs codes SQL intégrées dans le fichier d'initialisation. Cette vue est également exploitée dans le FME permettant d'envoyer les données sur la base esclave (construction d'une autre table).
 
 `m_mobilite.geo_mob_rurbain_ze` : Donnée géographique des arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
 `m_mobilite.an_mob_rurbain_passage` : Donnée alphanumérique gérant les passages aux arrêts physiques du réseau de transoport sur l'Agglomération de la Région de Compiègne(TIC).
@@ -268,6 +286,31 @@ Particularité(s) à noter : une adresse spécifique peut-être un secteur car s
 |id_poi_ele|Identifiant du POI correspondant à l'école|character varying||r_administratif.lk_cscomat_poi|
 |affiche_ele|formatage d'un message reprenant l'école de rattachement ou un autre message d'informations|character varying||sur condition de l'id_poi affiche nom de l'école ou message en dur|
 
+`x_apps_public.xappspublic_an_dec_pavtlc_adr_proxi` : table alphanumérique contenant les informations de proximités des conteneurs TLC pour chaque adresse (les 2 plus près). 
+
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||traitement FME|
+|id_adresse|Identifiant de l'adresse|integer||traitement FME|
+|id_cont_tl|Identifiant du conteneur|character varying||traitement FME|
+|distance|distance entre le point d'adresse et le point du conteneur|numeric||traitement FME|
+|ordre|ordre de tri pour le 1er et 2nd|integer||traitement FME|
+
+Particularité(s) à noter : cette table n'est pas stockée dans la base de production mais directement envoyée par un Workflow FME dans la base esclave.
+
+
+`x_apps_public.xappspublic_an_dec_pavverre_adr_proxi` : table alphanumérique contenant les informations de proximités des conteneurs VERRE pour chaque adresse (les 2 plus près). 
+
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||traitement FME|
+|id_adresse|Identifiant de l'adresse|integer||traitement FME|
+|id_contver|Identifiant du conteneur|character varying||traitement FME|
+|distance|distance entre le point d'adresse et le point du conteneur|numeric||traitement FME|
+|ordre|ordre de tri pour le 1er et 2nd|integer||traitement FME|
+
+Particularité(s) à noter : cette table n'est pas stockée dans la base de production mais directement envoyée par un Workflow FME dans la base esclave.
+
 ---
 
 - Bureau de vote :
@@ -299,6 +342,16 @@ Sans objet
 
 Un worflow FME a été réalisé permettant de gérer l'envoi automatique des données vers la base esclave. Il est stockée ici Y:\Ressources\4-Partage\3-Procedures\FME\prod\APPS_GB_PUBLIC\PLAN_INTERACTIF.fmw.
 Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveur sig-applis.
+
+|Nom de la couche | mise à jour journalière |type d'envoi | traitement FME réalisé |
+|:---|:---|:---|
+|r_osm.geo_osm_commune_arcba|non|brute|aucun|
+|r_osm.geo_osm_masque_arcba|non|brute|aucun|
+|x_apps_public.x_appspublic_geo_v_adresse|oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_adresse|oui|brute|aucun|
+|x_apps_public.x_appspublic_geo_vmr_planinteractif_refelu|non|brute|aucun|
+|r_plan.geo_plan_refpoi|oui|brute|aucun|
+|r_plan.an_plan_refcontactpoi|oui|brute|aucun|
 
 Aucune fiche de procédures n'a été réalisée.
 
