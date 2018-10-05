@@ -250,11 +250,22 @@ Particularité(s) à noter : une adresse spécifique peut-être un secteur car s
 
 `x_apps_public.xappspublic_geo_v_carte_scolaire_mat` : Vue géométrique contenant les informations de la carte scolaire pour les écoles maternelles sur l'Agglomération de la Région de Compiègne. Cette donnée permet de remonter l'école assignée à l'adresse saisie dans l'application.
 
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||row_number|
+|id_adresse|Identifiant de l'adresse|integer||x_apps.xapps_geo_vmr_adresse|
+|id|Identifiant interne du secteur scolaire|integer||r_administratif.geo_carte_scolaire|
+|id_poi_mat|Identifiant du POI correspondant à l'école|character varying||r_administratif.lk_cscomat_poi|
+|affiche_mat|formatage d'un message reprenant l'école de rattachement ou un autre message d'informations|character varying||sur condition de l'id_poi affiche nom de l'école ou message en dur|
 
 `x_apps_public.xappspublic_geo_v_carte_scolaire_ele` : Vue géométrique contenant les informations de la carte scolaire pour les écoles élémentaires sur l'Agglomération de la Région de Compiègne. Cette donnée permet de remonter l'école assignée à l'adresse saisie dans l'application.
-
-(structure ici)
+|Nom attribut | Définition | Type  | Valeurs par défaut | Provenance |
+|:---|:---|:---|:---|:---|
+|gid|Identifiant interne|integer||row_number|
+|id_adresse|Identifiant de l'adresse|integer||x_apps.xapps_geo_vmr_adresse|
+|id|Identifiant interne du secteur scolaire|integer||r_administratif.geo_carte_scolaire|
+|id_poi_ele|Identifiant du POI correspondant à l'école|character varying||r_administratif.lk_cscomat_poi|
+|affiche_ele|formatage d'un message reprenant l'école de rattachement ou un autre message d'informations|character varying||sur condition de l'id_poi affiche nom de l'école ou message en dur|
 
 ---
 
