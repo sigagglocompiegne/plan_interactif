@@ -103,8 +103,24 @@ Particularité(s) à noter : aucune
 |l_m_url|url dusite internet, facebook, ... du maire|character varying||r_administratif.an_ref_maire|
 |l_m_photo|nom du fichier image contenant la photo du maire|character varying||r_administratif.an_ref_maire|
 |l_er1|nom du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
-
-
+|l_er_titre1|titre du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_email1|email du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_tel1|email du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_url1|url dusite internet, facebook, ... du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_photo1|nom du fichier image contenant la photo du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er2|nom du 1er élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_titre2|titre du 2nd élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_email2|email du 2nd élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_tel2|email du 2nd élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_url2|url dusite internet, facebook, ... du 2nd élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_photo2|nom du fichier image contenant la photo du 2nd élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er3|nom du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_titre3|titre du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_email3|email du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_tel3|email du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_url3|url dusite internet, facebook, ... du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|l_er_photo3|nom du fichier image contenant la photo du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
+|geom|attribut de géométrie|geometry(MultiPolygon,2154)||r_administratif.geo_adm_quartier|
 
 Particularité(s) à noter : aucune
 
