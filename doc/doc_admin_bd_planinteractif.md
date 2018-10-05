@@ -164,7 +164,7 @@ Sans objet
 Un worflow FME a été réalisé permettant de gérer l'envoi automatique des données vers la base esclave. Il est stockée ici Y:\Ressources\4-Partage\3-Procedures\FME\prod\APPS_GB_PUBLIC\PLAN_INTERACTIF.fmw.
 Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveur sig-applis.
 
-Aucune fiche de procédures ont été réalisées.
+Aucune fiche de procédures n'a été réalisée.
 
 ---
 
