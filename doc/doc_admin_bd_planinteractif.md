@@ -374,6 +374,8 @@ Sans objet
 Un worflow FME a été réalisé permettant de gérer l'envoi automatique des données vers la base esclave. Il est stockée ici Y:\Ressources\4-Partage\3-Procedures\FME\prod\APPS_GB_PUBLIC\PLAN_INTERACTIF.fmw.
 Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveur sig-applis.
 
+Les traitements réalisés avant envoi vers la base esclave sont commentés à l'intérieur du Workflow.
+
 |Nom de la ou des couches en entrée | Nom de la couche en sortie | mise à jour journalière |type d'envoi | traitement FME réalisé |
 |:---|:---|:---|:---|:---|
 |r_osm.geo_osm_commune_arcba|idem|non|brute|aucun|
@@ -398,6 +400,11 @@ Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveu
 |m_dechet.geo_dec_secteur_om|idem|oui|brute|aucun|
 |m_dechet.geo_dec_pav_verre,x_apps_public.xappspublic_geo_v_adresse|x_apps_public.xappspublic_an_dec_pavverre_adr_proxi|oui|après traitement|![picto](/doc/img/fme_dec_verre_proxi.jpg)|
 |m_dechet.geo_dec_pav_tlc,x_apps_public.xappspublic_geo_v_adresse|x_apps_public.xappspublic_an_dec_pavtlc_adr_proxi|oui|après traitement|![picto](/doc/img/fme_dec_tlc_proxi.jpg)|
+|x_apps_public.xappspublic_geo_v_carte_scolaire_mat|idem|oui|brute|aucun|
+|x_apps_public.xappspublic_geo_v_carte_scolaire_ele|idem|oui|brute|aucun|
+|r_administratif.geo_decoupage_electoral|idem|oui|brute|aucun|
+|x_apps_public.xappspublic_geo_v_fo_sfr_pm|idem|oui|brute|aucun|
+|m_mobilite.geo_mob_borne_electrique|idem|oui|brute|aucun|
 
 Aucune fiche de procédures n'a été réalisée.
 
