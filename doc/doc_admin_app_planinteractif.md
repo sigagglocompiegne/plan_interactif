@@ -207,16 +207,58 @@ Sans objet
 
    * particularité(s) : aucune
    
+## GeoTable : `xappspublic_geo_mob_rurbain_la`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_annonce|x|x|x| Message d'annonce (en HTM) si besoin|Fiche d'information : Arrêt TIC||
+|et_img_ligne  |x|x|x| Formate l'affichage des lignes par leur image (en HTML)|Fiche d'information : Equipement, Arrêt TIC et Recherche d'un arrêt du réseau TIC|
+|eti_img_text   |x||x|Formate l'affichage du nom de l'arrêt TIC|Fiche d'information : Arrêt TIC et  Recherche d'un arrêt du réseau TIC||
+
+   * filtres :
+   
+Sans objet
+
+   * relations :
+
+|Géotables ou Tables| Champs de jointure | Type |
+|:---|:---|:---|
+|  xappspublic_geo_mob_rurbain_ze | id_la | 0 à n (égal) |
+| + xappspublic_an_mob_rurbain_passage | id_ze | 0 à n (égal) |
+| + an_mob_rurbain_docligne | id_ligne | 1 à n (égal) |
+|  xappspublic_geo_mob_rurbain_ze | id_la | 0 à n (égal) |
+| + xappspublic_an_mob_rurbain_passage | id_ze | 0 à n (égal) |
+| + an_mob_rurbain_docligne | id_ligne | 1 à n (égal) |
+
+   * particularité(s) : aucune
+   
 
 # Les fonctionnalités
 
 Sont présentées ici uniquement les fonctionnalités spécifiques à l'application.
 
-## Recherche globale : `Recherche dans la Base Adresse Locale`
+## Recherche globale : `Recherche d'une adresse (BAL)`
 
 Cette recherche permet à l'utilisateur de faire une recherche libre sur une adresse.
 
-Cette recherche a été créée pour l'application RVA. Le détail de celle-ci est donc à visualiser dans le répertoire GitHub rva au niveau de la documentation applicative.
+* Configuration :
+
+Source : `xappspublic_geo_v_adresse (ARC)`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|adresse_apostrophe ||x||||
+|adresse_html |x||x|||
+|affiche_rech_adr_vide |x|||||
+|affiche_rech_adr |x|||||
+|geom||||x||
+
+(Calcul des suggestions par "Contient les mots entiers")
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres : aucun
+
+ * Fiches d'information active : aucune
 
 ## Recherche globale : `Recherche dans la Base de Voie Locale`
 
