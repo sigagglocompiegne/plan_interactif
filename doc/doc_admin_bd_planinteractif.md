@@ -359,7 +359,7 @@ Particularité(s) à noter : certaines communes ne sont pas renseignées.
 |:---|:---|:---|:---|:---|
 |mdate_maj|date maximum |geometry(polygon,2154)||m_mobilite.geo_mob_rurbain_la|
 
-Particularité(s) à noter : cette vue reprend les éléments de la table m_reseau_sec.geo_fo_sfr_pm sauf pour la date maximum de mise à jour contenue dans les données.
+Particularité(s) à noter : cette vue reprend les éléments de la table m_reseau_sec.geo_fo_sfr_pm sauf pour la date maximum de mise à jour contenue dans les données pour gérer l'affichage dans GEO. Cette donnée est mise à jour via l'application métier saisie par la DSI.
 
 ---
 
