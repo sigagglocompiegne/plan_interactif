@@ -6,7 +6,7 @@
 
 |Représentation| Nom de l'application |Résumé|
 |:---|:---|:---|
-|![picto](/doc/img/picto_plan_interactif.png)|Plan Interactif|Cette application grans public est dédiée à la recherche d'informations sur les services publics (élus, écoles, bureau de vote, ...) à partir de la recherche d'une adresse.|
+|![picto](/doc/img/picto_plan_interactif_vert.png)|Plan Interactif|Cette application grans public est dédiée à la recherche d'informations sur les services publics (élus, écoles, bureau de vote, ...) à partir de la recherche d'une adresse.|
 
 
 # Accès
