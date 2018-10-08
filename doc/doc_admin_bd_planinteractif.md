@@ -387,9 +387,12 @@ Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveu
 |x_apps_public.xappspublic_geo_v_tic_la_tampon|idem|non|après traitement|ne conserve que l'id_la et la geom pour l'envoi|
 |m_mobilite.geo_mob_rurbain_ze, x_apps_public.xappspublic_an_v_tic_ze_gdpu, x_apps_public.xappspublic_geo_v_tic_ze_gdpu|x_apps_public.xappspublic_geo_mob_rurbain_ze|non|après traitement|![picto](/doc/img/fme_tic_ze.jpg)|
 |m_mobilite.an_mob_rurbain_passage, m_mobilite.lt_mob_rurbain_terminus|x_apps_public.xappspublic_an_mob_rurbain_passage|non|après traitement|![picto](/doc/img/fme_tic_passage.jpg)|
-|m_mobilite.an_mob_rurbain_ligne|idem|non|brute||
-|m_mobilite.an_mob_rurbain_docligne|idem|non|brute||
-
+|m_mobilite.an_mob_rurbain_ligne|idem|non|brute|aucun|
+|m_mobilite.an_mob_rurbain_docligne|idem|non|brute|aucun|
+|m_mobilite.geo_mob_3v_statio|idem|oui|brute|aucun|
+|m_tourisme.geo_tou_depart_rando|idem|oui|brute|aucun|
+|m_dechet.geo_dec_pav_verre|idem|oui|après traitement|![picto](/doc/img/fme_dec_maj.jpg)|
+|m_dechet.geo_dec_pav_tlc|idem|oui|après traitement|![picto](/doc/img/fme_dec_maj.jpg)|
 
 Aucune fiche de procédures n'a été réalisée.
 
