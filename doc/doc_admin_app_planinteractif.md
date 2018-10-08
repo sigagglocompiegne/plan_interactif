@@ -158,27 +158,52 @@ Sans objet
 |Dispensaires |poi_n3||Alphanumérique| est égale à une valeur par défaut|16211,16212,16213,16214,16215,16312,16416,16512,16513,16516,16912,16915,16917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
 |Hébergement spécialisés |poi_n3||Alphanumérique| est égale à une valeur par défaut|14913,14914,14917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
 |Autres administrations |poi_n3||Alphanumérique| est égale à une valeur par défaut|22111,22113,18112,18115,19212,19213,17400|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Bibliothèques |poi_n3||Alphanumérique| est égale à une valeur par défaut||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Bibliothèques, médiathèques,archives |poi_n3||Alphanumérique| est égale à une valeur par défaut|13111,13113,13115|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Parcours sportif |poi_lib||sql| {poi_lib} like '%Parcours sportif%' or {poi_lib} like '%Parcours de santé%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Primaire |poi_n2||Alphanumérique| est égale à une valeur par défaut|101|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Piscine |poi_n3||Alphanumérique| est égale à une valeur par défaut|12313|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Foyers logements |poi_n3||Alphanumérique| est égale à une valeur par défaut|14211,14212,14213,14215|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Emploi |poi_n2||Alphanumérique| est égale à une valeur par défaut|182,183,184,185|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Espace jeune |poi_n3||Alphanumérique| est égale à une valeur par défaut|13415|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Gare routière |poi_n3||Alphanumérique| est égale à une valeur par défaut|20911|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Services de secours |poi_n3||Alphanumérique| est égale à une valeur par défaut|19513|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Patinoire |poi_n3||Alphanumérique| est égale à une valeur par défaut|12316|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Centre de loisirs, écoles artistiques |poi_n3||Alphanumérique| est égale à une valeur par défaut|13212,13213|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Nom marché |poi_lib||sql| {poi_lib} like '%Marché%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Formation supérieure |poi_n2||Alphanumérique| est égale à une valeur par défaut|103,104|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Equitation|poi_n3||Alphanumérique| est égale à une valeur par défaut|12215,12212|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Office du tourisme |poi_n3||Alphanumérique| est égale à une valeur par défaut|17319|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Golf |poi_n3||Alphanumérique| est égale à une valeur par défaut|12218|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Crématorium |poi_lib||sql| {poi_lib} like '%Crématorium%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Maisons de retraite |poi_n3||Alphanumérique| est égale à une valeur par défaut|14111,14112,14113,14114|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Aire de covoiturage |poi_n3||Alphanumérique| est égale à une valeur par défaut|20916|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Nautique |poi_lib||sql| {poi_lib} like '%Nautique%' or {poi_lib} like '%nautique%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Marché |poi_n3||Alphanumérique| est égale à une valeur par défaut|17319|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Stand de tir |poi_lib||sql| {poi_lib} like '%Stand de Tir%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Musée |poi_n3||Alphanumérique| est égale à une valeur par défaut|13311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Déchetterie |poi_n3||Alphanumérique| est égale à une valeur par défaut|22512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Secondaire |poi_n3||Alphanumérique| est égale à une valeur par défaut|10211,10212,10213,10214,10215|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Polices |poi_n3||Alphanumérique| est égale à une valeur par défaut|19413,19414,19512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Gymnase|poi_n3||Alphanumérique| est égale à une valeur par défaut|12311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Formation professionnelle |poi_n3||Alphanumérique| est égale à une valeur par défaut|18215,18511,10911,10912,10919|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Citys Stades |poi_n3||Alphanumérique| est égale à une valeur par défaut|12217|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Dojo |poi_lib||sql| ({poi_lib} like '%Dojo%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Recyclerie |poi_n3||Alphanumérique| est égale à une valeur par défaut|22512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Culte |poi_n1||Alphanumérique| est égale à une valeur par défaut|21|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Boulodromes |poi_n3||Alphanumérique| est égale à une valeur par défaut|12214|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Justice |poi_n3||Alphanumérique| est égale à une valeur par défaut|19311,19313,19314,19317|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Petite enfance |poi_n2||Alphanumérique| est égale à une valeur par défaut|111,112|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Centres sociaux |poi_n3||Alphanumérique| est égale à une valeur par défaut|14311,14911;14912|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Cimetière |poi_n3||Alphanumérique| est égale à une valeur par défaut|23000|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Théâtre, salle de spectacles |poi_n3||Alphanumérique| est égale à une valeur par défaut|13312,13313|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
 
    * relations :
 
 |Géotables ou Tables| Champs de jointure | Type |
 |:---|:---|:---|
-| xappspublic_geo_vmr_planinteractif_refelu | geom | 0 à 1 (intersection) |
-| xappspublic_geo_v_carte_scolaire_ele | id_adresse | 0 à n (égal) |
-| xappspublic_geo_v_carte_scolaire_mat | id_adresse | 0 à n (égal) |
-| geo_decoupage_electoral | geom | 0 à 1 (intersection) |
-| + geo_decoupage_electoral | id_poi | 1 à n (égal) |
-| xapps_geo_v_dec_secteur_enc_secteur | geom | 1 (intersection) |
-| xapps_geo_v_fo_sfr_pm | geom | 1 (intersection) |
-| geo_dec_secteur_om | geom | 1 (intersection) |
-| xappspublic_an_dec_pavverre_adr_proxi | id_adresse | 0 à n (égal) |
-| + geo_dec_pav_verre | id_contver | 0 à n (égal) |
-| xappspublic_an_dec_pavtlc_adr_proxi | id_adresse | 0 à n (égal) |
-| + geo_dec_pav_tlc | id_cont_tl | 0 à n (égal) |
-|  xappspublic_geo_mob_rurbain_la_tampon | geom | 0 à n (intersection) |
+| an_plan_refcontactpoi | id_poi | 0 à 1 (égal) |
+| xappspublic_geo_mob_rurbain_la_tampon | geom | 0 à n (Centroïd est contenu) |
 | + xappspublic_geo_mob_rurbain_la | id_la | 0 à n (égal) |
-| xappspublic_an_vmr_fichegeo_ruplu0_gdpublic | insee | 1 (égal) |
 
    * particularité(s) : aucune
    
