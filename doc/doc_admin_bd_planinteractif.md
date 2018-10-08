@@ -393,6 +393,11 @@ Ce Workflowest exécuté toutes les nuits via une tache planifiée sur le serveu
 |m_tourisme.geo_tou_depart_rando|idem|oui|brute|aucun|
 |m_dechet.geo_dec_pav_verre|idem|oui|après traitement|![picto](/doc/img/fme_dec_maj.jpg)|
 |m_dechet.geo_dec_pav_tlc|idem|oui|après traitement|![picto](/doc/img/fme_dec_maj.jpg)|
+|m_dechet.an_dec_pav_doc_media|idem|oui|brute|aucun|
+|x_apps_public.xappspublic_geo_v_dec_secteur_enc_secteur|idem|oui|brute|aucun|
+|m_dechet.geo_dec_secteur_om|idem|oui|brute|aucun|
+|m_dechet.geo_dec_pav_verre,x_apps_public.xappspublic_geo_v_adresse|x_apps_public.xappspublic_an_dec_pavverre_adr_proxi|oui|après traitement|![picto](/doc/img/fme_dec_verre_proxi.jpg)|
+|m_dechet.geo_dec_pav_tlc,x_apps_public.xappspublic_geo_v_adresse|x_apps_public.xappspublic_an_dec_pavtlc_adr_proxi|oui|après traitement|![picto](/doc/img/fme_dec_tlc_proxi.jpg)|
 
 Aucune fiche de procédures n'a été réalisée.
 
