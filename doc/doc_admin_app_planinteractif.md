@@ -33,25 +33,47 @@ Sans objet
 
 Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les besoins de l'application. Les autres données servant d'habillage (pour la cartographie ou les recherches) sont listées dans les autres parties ci-après. Le tableau ci-dessous présente uniquement les changements (type de champ, formatage du résultat, ...) ou les ajouts (champs calculés, filtre, ...) non présents dans la donnée source. 
 
-## Table : `m_fiscalite.an_fisc_geo_taxe_amgt`
+## GeoTable : `x_apps_public.xappspublic_geo_v_adresse`
 
 |Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
 |:---|:-:|:-:|:---|:---|:---|:---|
-|affiche_taux|x|x||Gestion de l'affichage du taux `Si taux=9999 alors Non renseigné sinon taux %`|Fiche de renseignements d'urbanisme||
-|affiche_url|x|x||Déclaré en lien. Affiche le lien de l'arrêté municipal si il existe autrement rien|Fiche de renseignements d'urbanisme||
-|taux_num |x|x||Formate l'affichage numérique du taux pour intégration dela champ calculé affiche_taux|Fiche de renseignements d'urbanisme||
+|adresse_apostrophe|x|||Remplace l'apostrophe par rien, permet la recherche d'adresse sans tenir compte de cette apostrophe |Recherche d'une adresse (BAL)||
+|adresse_complete |x|||Génère l'adresse complète|Fiches d'informations||
+|adresse_html |x|x||Contient le champ calculé `adresse_complete` et affichage / suggestion en résultat de recherche et déclaré en HTML|Recherche d'une adresse (BAL)||
+|affiche_etiquette  |x|||résultat du calcul `angle`x-1 pour afficher l'étiquette du point d'adresse|Cartothèque||
+|affiche_mes_docurba |x|||Formatage du message pour cliquer sur parcelle et déclaré en HTML|Recherche d'une adresse (localiser une parcelle)||
+|affiche_rech_adr |x|||Formatage du message au résultat d'une adresse et déclaré en HTML|Recherche d'une adresse (BAL)||
+|affiche_rech_adr_ru |x|||Formatage du message au résultat d'une adresse (test pour RU) et déclaré en HTML|Recherche d'une adresse (BAL)||
+|affiche_rech_adr_vide  |x|||Formatage du message pour aucun résultat (test pour RU) et déclaré en HTML|Recherche d'une adresse (BAL)||
+
 
    * filtres :
    
 |Nom|Attribut| Au chargement | Type | Condition |Valeur|Description|
 |:---|:---|:-:|:---:|:---:|:---|:---|
-|PAU_statut|l_statut|x|Alphanumérique|est égale à une valeur par défaut|true||
-   
+|ARC|insee|x|Alphanumérique|est égale à une valeur par défaut|code insee des communes de l'ARC||
+|Pas de n° (00000)|numero|x|Alphanumérique|est différente de une valeur par défaut|00000||
+|Fenêtre carte|geom||spatial|est contenue dans la sélection courante||| 
+
    * relations :
 
 |Géotables ou Tables| Champs de jointure | Type |
 |:---|:---|:---|
-| r_bg_edigeo.PARCELLE (Parcelle (Alpha) V3 dans GEO | idu | 0 à 1 (égal) |
+| xappspublic_geo_vmr_planinteractif_refelu | geom | 0 à 1 (intersection) |
+| xappspublic_geo_v_carte_scolaire_ele | id_adresse | 0 à n (égal) |
+| xappspublic_geo_v_carte_scolaire_mat | id_adresse | 0 à n (égal) |
+| geo_decoupage_electoral | geom | 0 à 1 (intersection) |
+| + geo_decoupage_electoral | id_poi | 1 à n (égal) |
+| xapps_geo_v_dec_secteur_enc_secteur | geom | 1 (intersection) |
+| xapps_geo_v_fo_sfr_pm | geom | 1 (intersection) |
+| geo_dec_secteur_om | geom | 1 (intersection) |
+| xappspublic_an_dec_pavverre_adr_proxi | id_adresse | 0 à n (égal) |
+| + geo_dec_pav_verre | id_contver | 0 à n (égal) |
+| xappspublic_an_dec_pavtlc_adr_proxi | id_adresse | 0 à n (égal) |
+| + geo_dec_pav_tlc | id_cont_tl | 0 à n (égal) |
+|  xappspublic_geo_mob_rurbain_la_tampon | geom | 0 à n (intersection) |
+| + xappspublic_geo_mob_rurbain_la | id_la | 0 à n (égal) |
+| xappspublic_an_vmr_fichegeo_ruplu0_gdpublic | insee | 1 (égal) |
 
    * particularité(s) : aucune
    
