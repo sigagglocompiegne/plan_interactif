@@ -122,7 +122,7 @@ Particularité(s) à noter : aucune
 |l_er_photo3|nom du fichier image contenant la photo du 3ème élu de quartier|character varying||r_administratif.an_ref_eluquartier|
 |geom|attribut de géométrie|geometry(MultiPolygon,2154)||r_administratif.geo_adm_quartier|
 
-Particularité(s) à noter : aucune
+Particularité(s) à noter : cette vue est paramétrée pour afficher 1 ou plusieurs élus par quartier. Ce qui ne peut pas être le cas si une simple jointure est faite dans GEO.
 
 ---
 
