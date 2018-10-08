@@ -44,7 +44,7 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 |affiche_mes_docurba |x|||Formatage du message pour cliquer sur parcelle et déclaré en HTML|Recherche d'une adresse (localiser une parcelle)||
 |affiche_rech_adr |x|||Formatage du message au résultat d'une adresse et déclaré en HTML|Recherche d'une adresse (BAL)||
 |affiche_rech_adr_ru |x|||Formatage du message au résultat d'une adresse (test pour RU) et déclaré en HTML|Recherche d'une adresse (BAL)||
-|affiche_rech_adr_vide  |x|||Formatage du message pour aucun résultat (test pour RU) et déclaré en HTML|Recherche d'une adresse (BAL)||
+|affiche_rech_adr_vide  |x|||Formatage d'une ligne vide (-) pour gérer l'affichage dans les bulles de résultats déclaré en HTML|Recherche d'une adresse (BAL)||
 
 
    * filtres :
@@ -77,42 +77,6 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 
    * particularité(s) : aucune
 
-## GeoTable : `geo_v_osm_commune_arcba`
-
-|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
-|:---|:-:|:-:|:---|:---|:---|:---|
-
-Sans objet
-
-
-   * filtres :
-   
-Sans objet
-
-   * relations :
-
-Sans objet
-
-   * particularité(s) : aucune
-   
-## GeoTable : `geo_v_osm_masque_arcba`
-
-|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
-|:---|:-:|:-:|:---|:---|:---|:---|
-
-Sans objet
-
-
-   * filtres :
-   
-Sans objet
-
-   * relations :
-
-Sans objet
-
-   * particularité(s) : aucune
-   
 
 ## GeoTable : `geo_plan_refpoi`
 
@@ -130,72 +94,7 @@ Sans objet
 |Nom|Attribut| Au chargement | Type | Condition |Valeur|Description|
 |:---|:---|:-:|:---:|:---:|:---|:---|
 |ARC|insee|x|Alphanumérique|est égale à une valeur par défaut|code insee des communes de l'ARC||
-|Parcs, jardins, aires de jeux|poi_n3||Alphanumérique|est égale à une valeur par défaut|15112,15113,15114,15118,15119|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|CIO |poi_n3||Alphanumérique| est égale à une valeur par défaut|18216|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Office du tourisme nom |poi_lib||Alphanumérique| commence par une valeur par défaut|Office|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Poste |poi_n3||Alphanumérique| est égale à une valeur par défaut|22312,22313,22314|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Hôpital |poi_n3||Alphanumérique| est égale à une valeur par défaut|16111,16112|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Cinéma |poi_n3||Alphanumérique| est égale à une valeur par défaut|13314|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Tennis |poi_n3||Alphanumérique| est égale à une valeur par défaut|12213|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Gare SNCF |poi_n3||Alphanumérique| est égale à une valeur par défaut|20113|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Maternités |poi_n3||Alphanumérique| est égale à une valeur par défaut|16311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Mairie |poi_n2||Alphanumérique| est égale à une valeur par défaut|171,175|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Danse |poi_lib||SQL|{poi_lib} like '%danse%' or {poi_lib} like '%Danse%' ||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Mur d'escalade |poi_n3||Alphanumérique| est égale à une valeur par défaut|12315|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Espace numérique |poi_n3||Alphanumérique| est égale à une valeur par défaut|13117|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Filtre sur espace de carte |geom||Alphanumérique| est contenue dans la sélection courante|||
-|Nom déchetterie |poi_lib||sql| {poi_lib} like '%Déchetterie%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Nom recyclerie |poi_lib||sql| {poi_lib} like '%Recyclerie%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Jeu d'arc |poi_lib||sql| {poi_lib} like '%Jeu d''Arc%' or {poi_lib} like '%Tir à l''Arc%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Base-Ball |poi_lib||sql| {poi_lib} like '%Base-Ball%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Skate Park |poi_lib||sql| {poi_lib} like '%Skate Park%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Karting |poi_lib||sql| {poi_lib} like '%Karting%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Maisons associatives |poi_n3||Alphanumérique| est égale à une valeur par défaut|17317|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Salles polyvalentes |poi_n3||Alphanumérique| est égale à une valeur par défaut|13414|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Stade et plaine de jeux |poi_n3||Alphanumérique| est égale à une valeur par défaut|12211|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Bureau de vote |usa_bvote||Alphanumérique| est égale à |true|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|BMX |poi_lib||sql| {poi_lib} like '%BMX%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Dispensaires |poi_n3||Alphanumérique| est égale à une valeur par défaut|16211,16212,16213,16214,16215,16312,16416,16512,16513,16516,16912,16915,16917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Hébergement spécialisés |poi_n3||Alphanumérique| est égale à une valeur par défaut|14913,14914,14917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Autres administrations |poi_n3||Alphanumérique| est égale à une valeur par défaut|22111,22113,18112,18115,19212,19213,17400|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Bibliothèques, médiathèques,archives |poi_n3||Alphanumérique| est égale à une valeur par défaut|13111,13113,13115|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Parcours sportif |poi_lib||sql| {poi_lib} like '%Parcours sportif%' or {poi_lib} like '%Parcours de santé%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Primaire |poi_n2||Alphanumérique| est égale à une valeur par défaut|101|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Piscine |poi_n3||Alphanumérique| est égale à une valeur par défaut|12313|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Foyers logements |poi_n3||Alphanumérique| est égale à une valeur par défaut|14211,14212,14213,14215|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Emploi |poi_n2||Alphanumérique| est égale à une valeur par défaut|182,183,184,185|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Espace jeune |poi_n3||Alphanumérique| est égale à une valeur par défaut|13415|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Gare routière |poi_n3||Alphanumérique| est égale à une valeur par défaut|20911|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Services de secours |poi_n3||Alphanumérique| est égale à une valeur par défaut|19513|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Patinoire |poi_n3||Alphanumérique| est égale à une valeur par défaut|12316|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Centre de loisirs, écoles artistiques |poi_n3||Alphanumérique| est égale à une valeur par défaut|13212,13213|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Nom marché |poi_lib||sql| {poi_lib} like '%Marché%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Formation supérieure |poi_n2||Alphanumérique| est égale à une valeur par défaut|103,104|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Equitation|poi_n3||Alphanumérique| est égale à une valeur par défaut|12215,12212|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Office du tourisme |poi_n3||Alphanumérique| est égale à une valeur par défaut|17319|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Golf |poi_n3||Alphanumérique| est égale à une valeur par défaut|12218|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Crématorium |poi_lib||sql| {poi_lib} like '%Crématorium%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Maisons de retraite |poi_n3||Alphanumérique| est égale à une valeur par défaut|14111,14112,14113,14114|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Aire de covoiturage |poi_n3||Alphanumérique| est égale à une valeur par défaut|20916|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Nautique |poi_lib||sql| {poi_lib} like '%Nautique%' or {poi_lib} like '%nautique%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Marché |poi_n3||Alphanumérique| est égale à une valeur par défaut|17319|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Stand de tir |poi_lib||sql| {poi_lib} like '%Stand de Tir%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Musée |poi_n3||Alphanumérique| est égale à une valeur par défaut|13311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Déchetterie |poi_n3||Alphanumérique| est égale à une valeur par défaut|22512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Secondaire |poi_n3||Alphanumérique| est égale à une valeur par défaut|10211,10212,10213,10214,10215|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Polices |poi_n3||Alphanumérique| est égale à une valeur par défaut|19413,19414,19512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Gymnase|poi_n3||Alphanumérique| est égale à une valeur par défaut|12311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Formation professionnelle |poi_n3||Alphanumérique| est égale à une valeur par défaut|18215,18511,10911,10912,10919|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Citys Stades |poi_n3||Alphanumérique| est égale à une valeur par défaut|12217|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Dojo |poi_lib||sql| ({poi_lib} like '%Dojo%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Recyclerie |poi_n3||Alphanumérique| est égale à une valeur par défaut|22512|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Culte |poi_n1||Alphanumérique| est égale à une valeur par défaut|21|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Boulodromes |poi_n3||Alphanumérique| est égale à une valeur par défaut|12214|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Justice |poi_n3||Alphanumérique| est égale à une valeur par défaut|19311,19313,19314,19317|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Petite enfance |poi_n2||Alphanumérique| est égale à une valeur par défaut|111,112|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Centres sociaux |poi_n3||Alphanumérique| est égale à une valeur par défaut|14311,14911;14912|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Cimetière |poi_n3||Alphanumérique| est égale à une valeur par défaut|23000|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
-|Théâtre, salle de spectacles |poi_n3||Alphanumérique| est égale à une valeur par défaut|13312,13313|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+
 
    * relations :
 
@@ -232,6 +131,44 @@ Sans objet
 
    * particularité(s) : aucune
    
+## GeoTable : `geo_mob_borne_electrique`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_result|x|x|| Formate l'affichage du n° de la borne|Recherche : Borne électrique||
+|affiche_result_1  |x|x|| Formate l'affichage du message cliquez ici pour + d'info (en HTML)|Fiche d'information : Les bornes électriques|
+
+   * filtres :
+   
+Sans objet
+
+   * relations :
+
+Sans objet
+
+   * particularité(s) : aucune
+   
+## GeoTable : `geo_mob_3v_statio`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|adresse_comp|x|x|| Formate de l'adresse pour affichage dans lafiche|Fiche d'informations : Stationnement vélo||
+|nb_place  |x|x|| Formate l'affichage du champ `capacité` (si 0 = inconnu sinon valeur) (avancé SQL)|Fiche d'information :  Stationnement vélo, Recherche : Stationnement vélo |
+|type_equipement  |x|x|| Formate l'affichage du champ `mobilier` (si null = inconnu sinon valeur) (avancé SQL)|Fiche d'information :  Stationnement vélo, Recherche : Stationnement vélo |
+
+   * filtres :
+   
+|Nom|Attribut| Au chargement | Type | Condition |Valeur|Description|
+|:---|:---|:-:|:---:|:---:|:---|:---|
+|ARC|insee|x|Alphanumérique|est égale à une valeur par défaut|code insee des communes de l'ARC||
+|Actif|statut||Alphanumérique|est égale à une valeur par défaut|10|affiche uniquement les valeurs actives|
+
+   * relations :
+
+Sans objet
+
+   * particularité(s) : aucune
+   
 
 # Les fonctionnalités
 
@@ -258,94 +195,219 @@ Source : `xappspublic_geo_v_adresse (ARC)`
 
  * Filtres : aucun
 
- * Fiches d'information active : aucune
+ * Fiches d'information active : Fiche d'informations
 
-## Recherche globale : `Recherche dans la Base de Voie Locale`
 
-Cette recherche permet à l'utilisateur de faire une recherche libre sur le libellé d'une voie.
+## Recherche (clic sur la carte) : `Recherche d'une adresse (BAL)`
 
-Cette recherche a été créée pour l'application RVA. Le détail de celle-ci est donc à visualiser dans le répertoire GitHub rva au niveau de la documentation applicative.
+Cette recherche permet à l'utilisateur de cliquer sur la carte et de remonter les informations à l'adresse et d'accéder à la fiche d'Informations.
 
-## Recherche globale : `Localiser une commune de l'APC`
+Même configuration que la recherche globale plus haut. 
 
-Cette recherche permet à l'utilisateur de faire une recherche sur une commune du Pays Compiégnois.
+
+## Recherche (fonctionnalités) : `Petite enfance`
+
+Cette recherche permet à l'utilisateur d'afficher les POI petites enfance sur la carte.
 
   * Configuration :
 
-Source : `geo_v_osm_commune_apc (pour recherche)`
+Source : `geo_plan_refpoi`
 
 |Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
 |:---|:-:|:-:|:-:|:-:|:-:|
-|Commune M|x|x|x|||
+|Equipement|x|||||
+|Commune|x|||||
 |geom||||x||
 
-(Calcul des suggestions par "Contient la chaîne")
-(la détection des doublons n'est pas activée ici)
-
- * Filtres : aucun
-
- * Fiches d'information active : aucune
- 
-## Recherche globale : `Localiser un équipement`
-
-Cette recherche permet à l'utilisateur de faire une recherche un équipement localisé dans une commune du Pays Compiégnois.
-
-  * Configuration :
-
-Source : `geo_plan_refpoi (usage APC)`
-
-|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
-|:---|:-:|:-:|:-:|:-:|:-:|
-|recherche_poi|x|x|x|||
-|geom||||x||
-
-(Calcul des suggestions par "Contient les mots entiers (Postgres Full-TextSearch)")
-(la détection des doublons n'est pas activée ici)
-
- * Filtres : aucun
-
- * Fiches d'information active : Fiche équipement
-
-## Recherche (clic sur la carte) : `Parcelle(s) sélectionnée(s)`
-
-Cette recherche permet à l'utilisateur de cliquer sur la carte et de remonter les informations de la parcelle et d'accéder soit à la fiche de renseignement d'urbanisme ou de la fiche parcelle détaillée (si les droits).
-
-  * Configuration :
-
-Source : `r_bg_edigeo.PARCELLE (Parcelle (Alpha) V3`
-
-Les champs affichés par défaut par le module intégrateur de l'éditeur ont été conservés ici.
-
-|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
-|:---|:-:|:-:|:-:|:-:|:-:|
-|Bg Emplacement|x|||||
-|Bg Full Address|x|||||
-
-L'attribut de géométrie (geom) utilisé est celui de la couche `Parcelle V3 (r_bg_edigeo.PARCELLE)`.
 (la détection des doublons n'est pas activée ici)
 
  * Filtres :
 
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
 |Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
 |:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
-|SECU|x|ccocom|est égale à une valeur du contexte `ccocom`|||||Ce champ est lié au profil utilisateur et contient le ou les code(s) insee lui permettant d'accéder aux données du cadastre de la ou des commune(s) en question|
+|Petite enfance|x|poi_n2|est égale à une valeur par défaut|111,112||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
 
 (1) si liste de domaine
 
- * Fiches d'information active : Renseignements d'urbanisme, Renseignements d'urbanisme (non DGFIP)
+ * Fiches d'information active : Equipement
  
-## Recherche (clic sur la carte) : `PPRi zonage (projet) - remarque`
+## Recherche (fonctionnalités) : `Primaire`
 
-Cette recherche permet à l'utilisateur de cliquer sur la carte et de remonter les informations de la parcelle et d'accéder soit à la fiche de renseignement d'urbanisme ou de la fiche parcelle détaillée (si les droits).
+Cette recherche permet à l'utilisateur d'afficher les POI des écoles primaires sur la carte.
 
   * Configuration :
 
-Source : `m_urbanisme_reg.geo_sup_pm1_ppri_projet_rq (PPRi zonage (projet) - remarque)`
+Source : `geo_plan_refpoi`
 
 |Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
 |:---|:-:|:-:|:-:|:-:|:-:|
-|affiche_result|x|||||
-|message|x|||||
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Primaire|x|poi_n2|est égale à une valeur par défaut|101||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Secondaire`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des écoles secondaires sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Secondaire|x|poi_n3|est égale à une valeur par défaut|10211,10212,10213,10214,10215||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Formation supérieure`
+
+Cette recherche permet à l'utilisateur d'afficher les POI petites enfance sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Formation supérieure|x|poi_n2|est égale à une valeur par défaut|103,104||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Gare SNCF`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des gares sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Gare SNCF|x|poi_n3|est égale à une valeur par défaut|20113||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+
+## Recherche (fonctionnalités) : `Gare routière`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des gares routières sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Gare routière|x|poi_n3|est égale à une valeur par défaut|20911||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Arrêt du réseau TIC`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des arrêts de bus du réseau TIC sur la carte.
+
+  * Configuration :
+
+Source : `xappspublic_geo_mob_rurbain_ze`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Arrêt||x|x|||
+|eti_arret_simple||||||
+|Arrêt|x|||||
+|Ligne(s)|x|||||
+|eti_arret|x|||||
+|geom||||x||
 
 (la détection des doublons n'est pas activée ici)
 
@@ -353,38 +415,20 @@ Source : `m_urbanisme_reg.geo_sup_pm1_ppri_projet_rq (PPRi zonage (projet) - rem
 
 Sans objet
 
-(1) si liste de domaine
+ * Fiches d'information active : Arrêt TIC
 
- * Fiches d'information active : PPRi zonage (projet) - remarque
+## Recherche (fonctionnalités) : `Aire de covoiturage`
 
-## Recherche : `Toutes les recherches cadastrales`
-
-L'ensemble des recherches cadastrales ont été formatées et intégrées par l'éditeur via son module GeoCadastre.
-Seul le nom des certaines recherches a été modifié par l'ARC pour plus de compréhension des utilisateurs.
+Cette recherche permet à l'utilisateur d'afficher les POI des aires de covoiturage sur la carte.
 
   * Configuration :
 
-Source : `r_bg_edigeo.PARCELLE (Parcelle (Alpha) V3`
-
-|Libellé d'origine|Nouveau libellé|
-|:---|:---|
-|Parcelles par adresse|Parcelles par adresse fiscale|
-|Parcelles par propriétaire|Parcelles par nom du propriétaire|
-|Parcelles par propriétairesde locaux|Parcelles par nom du propriétaire d'un local|
-
-## Recherche : `Par libellé de zone PLU`
-
-Cette recherche permet à l'utilisateur de faire une recherche sur les zonages d'une commune.
-
-  * Configuration :
-
-Source : `x_apps_geo_vmr_p_zone_urba`
+Source : `geo_plan_refpoi`
 
 |Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
 |:---|:-:|:-:|:-:|:-:|:-:|
-|Zonage|x|||||
-|libellé de voie|x|||||
-|libelon|x|||||
+|Equipement|x|||||
+|Commune|x|||||
 |geom||||x||
 
 (la détection des doublons n'est pas activée ici)
@@ -397,26 +441,97 @@ Source : `x_apps_geo_vmr_p_zone_urba`
 
 |Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
 |:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
-|Commune|x|insee|est égale à une valeur de liste de choix|Liste de domaine (Commune APC (sans filtre))|commune_m|insee|insee|||
-|zonage|x||Prédéfinis filtre à liste de choix|||||||
+|Aire de covoiturage|x|poi_n3|est égale à une valeur par défaut|20916||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
 
 (1) si liste de domaine
 
- * Fiches d'information active : Fiche détaillée POS-PLU-CC
+ * Fiches d'information active : Equipement
  
-## Recherche : `Par type de zone PLU`
+## Recherche (fonctionnalités) : `Borne électrique`
 
-Cette recherche permet à l'utilisateur de faire une recherche sur les types de zones d'une commune.
+Cette recherche permet à l'utilisateur d'afficher les POI des gares routières sur la carte.
 
   * Configuration :
 
-Source : `x_apps_geo_vmr_p_zone_urba`
+Source : `geo_mob_borne_electrique`
 
 |Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
 |:---|:-:|:-:|:-:|:-:|:-:|
-|Zonage|x|||||
-|libellé de voie|x|||||
-|libelon|x|||||
+|affiche_result|x|||||
+|Commune|x|||||
+|affiche_result_1|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+Sans objet
+
+ * Fiches d'information active : Les bornes électriques
+ 
+## Recherche (fonctionnalités) : `Stationnement vélo`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des stationnements vélos sur la carte.
+
+  * Configuration :
+
+Source : `geo_mob_3v_statio`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|nb_place|x|||||
+|type_equipement|x|||||
+|adresse_comp|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Actif|x|statut|est égale à une valeur par défaut|10||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Stationnement vélo
+
+## Recherche (fonctionnalités) : `Départ de randonnées`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des gares sur la carte.
+
+  * Configuration :
+
+Source : `geo_tou_depart_rando`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Rando nom|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+Sans objet
+
+ * Fiches d'information active : Randonnée
+
+## Recherche (fonctionnalités) : `Bibliothèques,médiathèques, archives`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des bibliothèques, ... sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
 |geom||||x||
 
 (la détection des doublons n'est pas activée ici)
@@ -429,25 +544,891 @@ Source : `x_apps_geo_vmr_p_zone_urba`
 
 |Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
 |:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
-|Commune|x|insee|est égale à une valeur de liste de choix|Liste de domaine (Commune APC (sans filtre))|commune_m|insee|insee|||
-|Type de zonage|x|typezone|est égale à une valeur de liste de choix|Liste de domaine (Type de zone PLU)|typezone_lib|typezone|typezone|||
+|Bibliothèques, médiathèques, archives|x|poi_n3|est égale à une valeur par défaut|13111,13113,13115||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
 
 (1) si liste de domaine
 
- * Fiches d'information active : Fiche détaillée POS-PLU-CC
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Espace numérique`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des espaces numériques sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Espace numérique|x|poi_n3|est égale à une valeur par défaut|13117||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
  
-## Recherche : `Recherche avancée d'une adresse`
+## Recherche (fonctionnalités) : `Musées`
 
-Cette recherche permet à l'utilisateur de faire une recherche guidée d'une adresse contrairement à la recherche globale par saisie libre.
+Cette recherche permet à l'utilisateur d'afficher les POI des musées sur la carte.
 
-Cette recherche a été créée pour l'application RVA. Le détail de celle-ci est donc à visualiser dans le répertoire GitHub rva au niveau de la documentation applicative.
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Musée|x|poi_n3|est égale à une valeur par défaut|13311||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Théâtres, salles de spectacles`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des théâtres et salles de spectacle sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Théâtres, salle de spectavles|x|poi_n3|est égale à une valeur par défaut|13312,13313||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+
+## Recherche (fonctionnalités) : `Cinéma`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des cinémas sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Cinéma|x|poi_n3|est égale à une valeur par défaut|13314||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
  
- ## Recherche : `Recherche avancée d'une voie`
+## Recherche (fonctionnalités) : `Karting-Bowling`
 
-Cette recherche permet à l'utilisateur de faire une recherche guidée d'une voie contrairement à la recherche globale par saisie libre.
+Cette recherche permet à l'utilisateur d'afficher les POI des karting-bowling sur la carte.
 
-Cette recherche a été créée pour l'application RVA. Le détail de celle-ci est donc à voisualiser dans le répertoire GitHub rva au niveau de la documentation applicative.
+  * Configuration :
 
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Karting|x|poi_lib|{poi_lib} like '%Karting%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Lieu de culte`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des lieux de cultes sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Culte|x|poi_n2|est égale à une valeur par défaut|21||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Centre de loisirs, écoles artistiques`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des centres de loisirs sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Centre de loisirs,écoles artistiques|x|poi_n3|est égale à une valeur par défaut|13212,13213||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Parcs, jardins, aires de jeux`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des parcs, jardins, ... sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Parcs, jardins,aires de jeux|x|poi_n3|est égale à une valeur par défaut|15112,15113,15114,15118,15119||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+
+## Recherche (fonctionnalités) : `Office du tourisme`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des offices de tourisme sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`||
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`||
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Office du tourisme|x|poi_n3|est égale à une valeur par défaut|17319||||||
+|Office du tourisme|x|poi_lib|commence par|Office||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+
+## Recherche (fonctionnalités) : `Piscine`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des piscines sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Piscine|x|poi_n3|est égale à une valeur par défaut|12313||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Patinoire`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des patinoires sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Patinoire|x|poi_n3|est égale à une valeur par défaut|12316||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Terrain de tennis`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des terrains de tennis sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Tennis|x|poi_n3|est égale à une valeur par défaut|12213||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Boulodromes`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des boulodromes sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Boulodromes|x|poi_n3|est égale à une valeur par défaut|12214||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Golf`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des golfs sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Golf|x|poi_n3|est égale à une valeur par défaut|12218||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Equitation`
+
+Cette recherche permet à l'utilisateur d'afficher les POI liés à l'équitation sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Equitation|x|poi_n3|est égale à une valeur par défaut|12215,12212||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : Citys Stade``
+
+Cette recherche permet à l'utilisateur d'afficher les POI des citys stades sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Citys Stades|x|poi_n3|est égale à une valeur par défaut|12217||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Stades et plaines de jeux`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des stades et palines de jeux sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Stades et plaines de jeux|x|poi_n3|est égale à une valeur par défaut|12211||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Base-Ball`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des terrains de Base-Ball sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Base-Ball|x|poi_lib|{poi_lib} like '%Base-Ball%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Gymnase`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des gymnases sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Gymnase|x|poi_n3|est égale à une valeur par défaut|12311||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Dojo`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des dojos sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Dojo|x|poi_lib|{poi_lib} like '%Dojo%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Danse`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des lieux de danses sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Danse|x|poi_lib|{poi_lib} like '%Danse%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Skate Park`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des Skate Park sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Skate Park|x|poi_lib|{poi_lib} like '%Skate Park%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `BMX`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des lieux de pratique du BMX sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|BMX|x|poi_lib|{poi_lib} like '%BMX%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Jeu d'arc`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des jeux d'arc sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Jeu d'arc|x|poi_lib|{poi_lib} like '%Jeu d''arc%' or {poi_lib} like '%Tir à l''Arc%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Nautique`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des activités nautiques sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Nautique|x|poi_lib|{poi_lib} like '%Nautique%' or {poi_lib} like '%nautique%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Parcours sportif`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des parcours sportifs sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Parcours sportifs|x|poi_lib|{poi_lib} like '%Parcours sportif%' or {poi_lib} like '%Parcours de santé%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Mur d'escalade`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des murs d'escalade sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Mur d'escalade|x|poi_n3|est égale à une valeur par défaut|12315||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : ``
+
+Cette recherche permet à l'utilisateur d'afficher les POI des parcs, jardins, ... sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Parcs, jardins,aires de jeux|x|poi_n3|est égale à une valeur par défaut|15112,15113,15114,15118,15119||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
 
 ## Fiche d'information : `Fiche adresse`
 
