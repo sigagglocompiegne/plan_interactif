@@ -33,7 +33,7 @@ Sans objet
 
 Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les besoins de l'application. Les autres données servant d'habillage (pour la cartographie ou les recherches) sont listées dans les autres parties ci-après. Le tableau ci-dessous présente uniquement les changements (type de champ, formatage du résultat, ...) ou les ajouts (champs calculés, filtre, ...) non présents dans la donnée source. 
 
-## GeoTable : `x_apps_public.xappspublic_geo_v_adresse`
+## GeoTable : `xappspublic_geo_v_adresse`
 
 |Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
 |:---|:-:|:-:|:---|:---|:---|:---|
@@ -54,6 +54,111 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 |ARC|insee|x|Alphanumérique|est égale à une valeur par défaut|code insee des communes de l'ARC||
 |Pas de n° (00000)|numero|x|Alphanumérique|est différente de une valeur par défaut|00000||
 |Fenêtre carte|geom||spatial|est contenue dans la sélection courante||| 
+
+   * relations :
+
+|Géotables ou Tables| Champs de jointure | Type |
+|:---|:---|:---|
+| xappspublic_geo_vmr_planinteractif_refelu | geom | 0 à 1 (intersection) |
+| xappspublic_geo_v_carte_scolaire_ele | id_adresse | 0 à n (égal) |
+| xappspublic_geo_v_carte_scolaire_mat | id_adresse | 0 à n (égal) |
+| geo_decoupage_electoral | geom | 0 à 1 (intersection) |
+| + geo_decoupage_electoral | id_poi | 1 à n (égal) |
+| xapps_geo_v_dec_secteur_enc_secteur | geom | 1 (intersection) |
+| xapps_geo_v_fo_sfr_pm | geom | 1 (intersection) |
+| geo_dec_secteur_om | geom | 1 (intersection) |
+| xappspublic_an_dec_pavverre_adr_proxi | id_adresse | 0 à n (égal) |
+| + geo_dec_pav_verre | id_contver | 0 à n (égal) |
+| xappspublic_an_dec_pavtlc_adr_proxi | id_adresse | 0 à n (égal) |
+| + geo_dec_pav_tlc | id_cont_tl | 0 à n (égal) |
+|  xappspublic_geo_mob_rurbain_la_tampon | geom | 0 à n (intersection) |
+| + xappspublic_geo_mob_rurbain_la | id_la | 0 à n (égal) |
+| xappspublic_an_vmr_fichegeo_ruplu0_gdpublic | insee | 1 (égal) |
+
+   * particularité(s) : aucune
+
+## GeoTable : `geo_v_osm_commune_arcba`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+
+Sans objet
+
+
+   * filtres :
+   
+Sans objet
+
+   * relations :
+
+Sans objet
+
+   * particularité(s) : aucune
+   
+## GeoTable : `geo_v_osm_masque_arcba`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+
+Sans objet
+
+
+   * filtres :
+   
+Sans objet
+
+   * relations :
+
+Sans objet
+
+   * particularité(s) : aucune
+   
+
+## GeoTable : `geo_plan_refpoi`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_ele|x||x| Gestion de l'affichage de l'école élémentaire d'appartenance (avancé sql)|Fiche d'information : Equipement||
+|affiche_mat  |x||x|Gestion de l'affichage de l'école maternelle d'appartenance (avancé sql)|Fiche d'information : Equipement|
+|affiche_result  |x|||Message de résultat si aucun équipement trouvé|Recherche d'un équipement||
+|affiche_vote  |x||x|Affichage du POI lieu de vote|Fiche d'information : Equipement||
+|poi_recherche |x|||Formate nom du POI et la commune|Recherche d'un équipement||
+
+
+   * filtres :
+   
+|Nom|Attribut| Au chargement | Type | Condition |Valeur|Description|
+|:---|:---|:-:|:---:|:---:|:---|:---|
+|ARC|insee|x|Alphanumérique|est égale à une valeur par défaut|code insee des communes de l'ARC||
+|Parcs, jardins, aires de jeux|poi_n3||Alphanumérique|est égale à une valeur par défaut|15112,15113,15114,15118,15119|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|CIO |poi_n3||Alphanumérique| est égale à une valeur par défaut|18216|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Office du tourisme nom |poi_lib||Alphanumérique| commence par une valeur par défaut|Office|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Poste |poi_n3||Alphanumérique| est égale à une valeur par défaut|22312,22313,22314|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Hôpital |poi_n3||Alphanumérique| est égale à une valeur par défaut|16111,16112|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Cinéma |poi_n3||Alphanumérique| est égale à une valeur par défaut|13314|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Tennis |poi_n3||Alphanumérique| est égale à une valeur par défaut|12213|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Gare SNCF |poi_n3||Alphanumérique| est égale à une valeur par défaut|20113|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Maternités |poi_n3||Alphanumérique| est égale à une valeur par défaut|16311|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Mairie |poi_n2||Alphanumérique| est égale à une valeur par défaut|171,175|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Danse |poi_lib||SQL|{poi_lib} like '%danse%' or {poi_lib} like '%Danse%' ||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Mur d'escalade |poi_n3||Alphanumérique| est égale à une valeur par défaut|12315|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Espace numérique |poi_n3||Alphanumérique| est égale à une valeur par défaut|13117|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Filtre sur espace de carte |geom||Alphanumérique| est contenue dans la sélection courante|||
+|Nom déchetterie |poi_lib||sql| {poi_lib} like '%Déchetterie%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Nom recyclerie |poi_lib||sql| {poi_lib} like '%Recyclerie%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Jeu d'arc |poi_lib||sql| {poi_lib} like '%Jeu d''Arc%' or {poi_lib} like '%Tir à l''Arc%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Base-Ball |poi_lib||sql| {poi_lib} like '%Base-Ball%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Skate Park |poi_lib||sql| {poi_lib} like '%Skate Park%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Karting |poi_lib||sql| {poi_lib} like '%Karting%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Maisons associatives |poi_n3||Alphanumérique| est égale à une valeur par défaut|17317|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Salles polyvalentes |poi_n3||Alphanumérique| est égale à une valeur par défaut|13414|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Stade et plaine de jeux |poi_n3||Alphanumérique| est égale à une valeur par défaut|12211|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Bureau de vote |usa_bvote||Alphanumérique| est égale à |true|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|BMX |poi_lib||sql| {poi_lib} like '%BMX%'||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Dispensaires |poi_n3||Alphanumérique| est égale à une valeur par défaut|16211,16212,16213,16214,16215,16312,16416,16512,16513,16516,16912,16915,16917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Hébergement spécialisés |poi_n3||Alphanumérique| est égale à une valeur par défaut|14913,14914,14917|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Autres administrations |poi_n3||Alphanumérique| est égale à une valeur par défaut|22111,22113,18112,18115,19212,19213,17400|utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
+|Bibliothèques |poi_n3||Alphanumérique| est égale à une valeur par défaut||utilisé pour les recherches fonctionnelles permettant d'afficher uniquement la catégorie filtrée|
 
    * relations :
 
