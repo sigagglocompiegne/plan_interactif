@@ -1399,9 +1399,9 @@ Source : `geo_plan_refpoi`
 
  * Fiches d'information active : Equipement
  
-## Recherche (fonctionnalités) : ``
+## Recherche (fonctionnalités) : `Mairies - Intercommunalités`
 
-Cette recherche permet à l'utilisateur d'afficher les POI des parcs, jardins, ... sur la carte.
+Cette recherche permet à l'utilisateur d'afficher les POI des mairies et siège des EPCI sur la carte.
 
   * Configuration :
 
@@ -1423,7 +1423,69 @@ Source : `geo_plan_refpoi`
 
 |Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
 |:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
-|Parcs, jardins,aires de jeux|x|poi_n3|est égale à une valeur par défaut|15112,15113,15114,15118,15119||||||
+|Mairie|x|poi_n2|est égale à une valeur par défaut|171,175||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Bureau de vote`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des bureaux de vote sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Bureau de vote|x|usa_bvote|est égale à une valeur par défaut|true||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Emploi`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des structures liées à l'emploi sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Emploi|x|poi_n2|est égale à une valeur par défaut|182,183,184,185||||||
 |Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
 
 (1) si liste de domaine
@@ -1611,6 +1673,7 @@ Source : `r_bg_majic.NBAT_10 (Parcelle (Alpha) V3)`
  * Saisie : aucune
 
  * Modèle d'impression : Fiche standard
+ 
  * Particularité : cette fiche est identique à la fiche "Renseignement d'urbanisme" sauf qu'elle n'affiche pas le nom des propriétaires et n'est accessible uniquement pour les profils non DGI à partir des applicatifs GEO.
 
 ## Analyse :
