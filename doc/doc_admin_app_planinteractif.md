@@ -1491,6 +1491,540 @@ Source : `geo_plan_refpoi`
 (1) si liste de domaine
 
  * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Maisons des associations, locaux associatifs,maison de quartier`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des structures associatives sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Emploi|x|poi_n3|est égale à une valeur par défaut|17317||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Palais de Justice, tribunaux, prison`
+
+Cette recherche permet à l'utilisateur d'afficher les POI liés à la Justice sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Justice|x|poi_n3|est égale à une valeur par défaut|19311,19313,19314,19317||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Autres administrations`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des autres administrations sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Autres administrations|x|poi_n3|est égale à une valeur par défaut|22111,22113,18112,18115,19212,19213,17400||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Déchetterie`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des déchetteries sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Déchetterie|x|poi_n3|est égale à une valeur par défaut|22512||||||
+|Nom Déchetterie|x|poi_lib|{poi_lib} like '%Déchetterie%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Recyclerie`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des recycleries sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Recyclerie|x|poi_n3|est égale à une valeur par défaut|22512||||||
+|Nom Recyclerie|x|poi_lib|{poi_lib} like '%Recyclerie%'|||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Conteneur Verre`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des conteneurs verres sur la carte.
+
+  * Configuration :
+
+Source : `geo_dec_pav_verre`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|affiche_info_bulle|x|||||
+|Commune|x|||||
+|affiche_plus_info|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Actif|x|statut|est égale à une valeur par défaut|10||||||
+|Non professionnel|x|env_implan|est différentde de la valeur par défaut|40||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Conteneur Verre
+ 
+
+## Recherche (fonctionnalités) : `Conteneur Textile`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des conteneurs TLC sur la carte.
+
+  * Configuration :
+
+Source : `geo_dec_pav_tlc`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|affiche_info_bulle|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+Sans objet
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Conteneur Textile
+ 
+## Recherche (fonctionnalités) : `Marché`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des marchés sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Non marché|x|poi_lib|{poi_lib} like '%Marché%'|||||||
+|Marché|x|poi_n3|est égale à une valeur par défaut|17319||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Cimetière, crématorium`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des cimetières et crématoriums sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Groupe de filtres par défaut|`ET`||
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+|Groupe de filtres par défaut|`OU`||
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Crématorium|x|poi_lib|{poi_lib} like '%Crématorium%'|||||||
+|Cimetière|x|poi_n3|est égale à une valeur par défaut|23000||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+
+## Recherche (fonctionnalités) : `Bureau de poste, centre de tri`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des bureaux de postes et/ou centre de tri sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Poste|x|poi_n3|est égale à une valeur par défaut|22312,22313,22314||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Hôpital, clinique, polyclinique`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des hôpitaux sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Hôpital|x|poi_n3|est égale à une valeur par défaut|16111,16112||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Dispensaires, centres médicaux`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des centres de soins sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Dispensaires|x|poi_n3|est égale à une valeur par défaut|16211,16212,16213,16214,16215,16312,16416,16512,16513,16516,16912,16915,16917||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Maternités`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des maternités sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Maternités|x|poi_n3|est égale à une valeur par défaut|16311||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Polices, gendarmeries`
+
+Cette recherche permet à l'utilisateur d'afficher les POI de la police et gendarmerie sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Polices|x|poi_n3|est égale à une valeur par défaut|19413,19414,19512||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Centres de secours`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des centres de secours (pompier) sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Services de secours|x|poi_n3|est égale à une valeur par défaut|19513||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Espace jeune`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des espaces pour jeunes sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Espace jeune|x|poi_n3|est égale à une valeur par défaut|13415||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Maisons de retraite, foyers clubs`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des maisons de retraites/foyers clubs sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Maisons de retraite|x|poi_n3|est égale à une valeur par défaut|14111,14112,14113,14114||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
 
 ## Fiche d'information : `Fiche adresse`
 
@@ -1499,6 +2033,7 @@ Source : `xapps_geo_vmr_adresse`
 Cette fiche est issus de l'application RVA. Consultez le répertoire rva sur GitHub pour plus de précisions.
 
 ## Fiche d'information : `Fiche équipement`
+
 
 Source : `r_plan.geo_plan_refpoi (usage APC)`
 
