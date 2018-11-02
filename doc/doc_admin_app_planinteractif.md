@@ -81,16 +81,16 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 
 |Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
 |:---|:-:|:-:|:---|:---|:---|:---|
-|affiche_coordonnee_er |x|x||Formate en HTML l'affichage des coordonnées du premier élu de quartier|champ calculé affiche_coordonnee_er_synt||
-|affiche_coordonnee_er2  |x|x||Formate en HTML l'affichage des coordonnées du second élu de quartier|champ calculé affiche_coordonnee_er_synt||
-|affiche_coordonnee_er3  |x|x||Formate en HTML l'affichage des coordonnées du troisième élu de quartier|champ calculé affiche_coordonnee_er_synt||
-|affiche_coordonnee_er_synt |x|x||Formate en HTML l'affichage des coordonnées des élus de quartier|Fiches d'informations||
-|affiche_coordonnee_maire |x|x||Formate en HTML l'affichage des coordonnées du maire|Fiches d'informations||
+|affiche_coordonnee_er |x|||Formate en HTML l'affichage des coordonnées du premier élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er2  |x|||Formate en HTML l'affichage des coordonnées du second élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er3  |x|||Formate en HTML l'affichage des coordonnées du troisième élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er_synt |x|||Formate en HTML l'affichage des coordonnées des élus de quartier|Fiches d'informations||
+|affiche_coordonnee_maire |x|||Formate en HTML l'affichage des coordonnées du maire|Fiches d'informations||
 |lien_logo |x|x||Formate en HTML l'affichage du logo de la commune|Fiches d'informations||
-|lien_photo_er |x|x||Formate en HTML la photo du 1er élu de quartier |champ calculé affiche_coordonnee_er||
-|lien_photo_er2 |x|x||Formate en HTML la photo du 2nd élu de quartier |champ calculé affiche_coordonnee_er2||
-|lien_photo_er3 |x|x||Formate en HTML la photo du 3ème élu de quartier |champ calculé affiche_coordonnee_er3||
-|lien_photo_maire |x|x||Formate en HTML la photo du maire |champ calculé affiche_coordonnee_maire||
+|lien_photo_er |x|||Formate en HTML la photo du 1er élu de quartier |champ calculé affiche_coordonnee_er||
+|lien_photo_er2 |x|||Formate en HTML la photo du 2nd élu de quartier |champ calculé affiche_coordonnee_er2||
+|lien_photo_er3 |x|||Formate en HTML la photo du 3ème élu de quartier |champ calculé affiche_coordonnee_er3||
+|lien_photo_maire |x|||Formate en HTML la photo du maire |champ calculé affiche_coordonnee_maire||
 
    * filtres : aucun
 
@@ -102,12 +102,12 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 
 |Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
 |:---|:-:|:-:|:---|:---|:---|:---|
-|affiche_ele|x||x| Gestion de l'affichage de l'école élémentaire d'appartenance (avancé sql)|Fiche d'information : Equipement||
-|affiche_mat  |x||x|Gestion de l'affichage de l'école maternelle d'appartenance (avancé sql)|Fiche d'information : Equipement|
+|affiche_ele|x||Nom de l'école (élé)| Gestion de l'affichage de l'école élémentaire d'appartenance (avancé sql)|Fiche d'information : Equipement||
+|affiche_mat  |x||Nom de l'école (mat)|Gestion de l'affichage de l'école maternelle d'appartenance (avancé sql)|Fiche d'information : Equipement|
 |affiche_result  |x|||Message de résultat si aucun équipement trouvé|Recherche d'un équipement||
-|affiche_vote  |x||x|Affichage du POI lieu de vote|Fiche d'information : Equipement||
+|affiche_vote  |x||Lieu de vote|Affichage du POI lieu de vote|Fiche d'information : Equipement||
 |poi_recherche |x|||Formate nom du POI et la commune|Recherche d'un équipement||
-
+|poi_lib |||Fiche d'informations : Equipement||||
 
    * filtres :
    
@@ -130,9 +130,9 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 
 |Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
 |:---|:-:|:-:|:---|:---|:---|:---|
-|affiche_annonce|x|x|x| Message d'annonce (en HTM) si besoin|Fiche d'information : Arrêt TIC||
-|et_img_ligne  |x|x|x| Formate l'affichage des lignes par leur image (en HTML)|Fiche d'information : Equipement, Arrêt TIC et Recherche d'un arrêt du réseau TIC|
-|eti_img_text   |x||x|Formate l'affichage du nom de l'arrêt TIC|Fiche d'information : Arrêt TIC et  Recherche d'un arrêt du réseau TIC||
+|affiche_annonce|x|x|| Message d'annonce (en HTM) si besoin|Fiche d'information : Arrêt TIC||
+|et_img_ligne  |x|x|Ligne(s)| Formate l'affichage des lignes par leur image (en HTML)|Fiche d'information : Equipement, Arrêt TIC et Recherche d'un arrêt du réseau TIC|
+|eti_img_text   |x||Arrêt|Formate l'affichage du nom de l'arrêt TIC|Fiche d'information : Arrêt TIC et  Recherche d'un arrêt du réseau TIC||
 
    * filtres :
    
@@ -157,6 +157,8 @@ Sans objet
 |:---|:-:|:-:|:---|:---|:---|:---|
 |affiche_result|x|x|| Formate l'affichage du n° de la borne|Recherche : Borne électrique||
 |affiche_result_1  |x|x|| Formate l'affichage du message cliquez ici pour + d'info (en HTML)|Fiche d'information : Les bornes électriques|
+|id_borne  |||N° de la borne| |Fiche d'information : Les bornes électriques|
+|url  |||Site| |Fiche d'information : Les bornes électriques|
 
    * filtres :
    
@@ -227,6 +229,96 @@ Sans objet
 
    * particularité(s) : aucune
    
+## GeoTable : `geo_decoupage_electoral`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_bureau |x||Votre bureau|Formate en HTML le message lié au bureau de vote selon la commune|Fiche d'informations : Fiche d'informations ||
+
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `xappspublic_geo_v_dec_secteur_enc_secteur`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_message |x||Les encombrants|Formate le message selon la commune et les champs l_message_1 ..|Fiche d'informations : Fiche d'informations ||
+
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `geo_dec_secteur_om`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_calendrier |x||Les ordures ménagères, la collecte sélective et les déchets verts|Si le chaamp calculé `l_fichier` n'est pas null affiche en html l'adresse de l'image avec `l_fichier` + `affiche_message` si non que `affiche_message`|Fiche d'informations : Fiche d'informations ||
+|affiche_message |x||Information(s) complémentaire(s)|Affiche les messages l_message(n) selon qu'il soit rempli ou vide|Champ calculé `affiche_message` ||
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `xappspublic_geo_v_carte_scolaire_mat`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+| affiche_mat ||x|Nom de l'école||Fiche d'informations : Fiche d'informations||
+| url ||x|+ d'infos||Fiche d'informations : Fiche d'informations||
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `xappspublic_geo_v_carte_scolaire_ele`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+| affiche_ele ||x|Nom de l'école||Fiche d'informations : Fiche d'informations||
+| url ||x|+ d'infos||Fiche d'informations : Fiche d'informations||
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `xappspublic_an_dec_pavverre_adr_proxi`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+| affiche_ordre |x|x||Formate l'affichage de l'ordre de proximité des PAV selon le champ ordre|Fiche d'informations : Fiche d'informations||
+
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
+   
+## GeoTable : `xappspublic_an_dec_pavtlc_adr_proxi`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+| affiche_ordre |x|x||Formate l'affichage de l'ordre de proximité des PAV selon le champ ordre|Fiche d'informations : Fiche d'informations||
+
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
 
 # Les fonctionnalités
 
@@ -2265,8 +2357,10 @@ Source : `xappspublic_geo_v_adresse (ARC)`
 |Où déposer votre verre ou vos textiles ?|||Vertical||||
 |Verre à proximité|affiche_ordre,adresse,commune_1|Par défaut|Vertical||+ d'infos (Conteneur verre)||
 |Textile à proximité|affiche_ordre_1,adresse_1,commune_2|Par défaut|Vertical||+ d'infos (Conteneur textile)||
-|Où déposer votre verre ou vos textiles ?|||Vertical||||
-
+|Vos jours de collecte des déchets ?|||Vertical||||
+|Les ordures ménagères, la collecte sélective et les déchets vertes|affiche_calendrier|Par défaut|Vertical||||
+|Les encombrants|affiche_message|Par défaut|Vertical||||
+|Votre accès internet par la fibre optique|affiche_info|par défaut|Vertical||||
 
  * Saisie : aucune
 
@@ -2274,7 +2368,6 @@ Source : `xappspublic_geo_v_adresse (ARC)`
 
 
 ## Fiche d'information : `Fiche équipement`
-
 
 
 Source : `r_plan.geo_plan_refpoi (usage APC)`
