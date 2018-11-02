@@ -77,6 +77,26 @@ Sont décrites ici les Géotables et/ou Tables intégrées dans GEO pour les bes
 
    * particularité(s) : aucune
 
+## GeoTable : `xappspublic_geo_vmr_planinteractif_refelu`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_coordonnee_er |x|x||Formate en HTML l'affichage des coordonnées du premier élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er2  |x|x||Formate en HTML l'affichage des coordonnées du second élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er3  |x|x||Formate en HTML l'affichage des coordonnées du troisième élu de quartier|champ calculé affiche_coordonnee_er_synt||
+|affiche_coordonnee_er_synt |x|x||Formate en HTML l'affichage des coordonnées des élus de quartier|Fiches d'informations||
+|affiche_coordonnee_maire |x|x||Formate en HTML l'affichage des coordonnées du maire|Fiches d'informations||
+|lien_logo |x|x||Formate en HTML l'affichage du logo de la commune|Fiches d'informations||
+|lien_photo_er |x|x||Formate en HTML la photo du 1er élu de quartier |champ calculé affiche_coordonnee_er||
+|lien_photo_er2 |x|x||Formate en HTML la photo du 2nd élu de quartier |champ calculé affiche_coordonnee_er2||
+|lien_photo_er3 |x|x||Formate en HTML la photo du 3ème élu de quartier |champ calculé affiche_coordonnee_er3||
+|lien_photo_maire |x|x||Formate en HTML la photo du maire |champ calculé affiche_coordonnee_maire||
+
+   * filtres : aucun
+
+   * relations : aucune
+
+   * particularité(s) : aucune
 
 ## GeoTable : `geo_plan_refpoi`
 
@@ -166,6 +186,44 @@ Sans objet
    * relations :
 
 Sans objet
+
+   * particularité(s) : aucune
+   
+## GeoTable : `geo_dec_pav_verre`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_info_bulle|x|x|| Formate une info bulle affichant le type de conteneur et son adresse |Recherche : Conteneur verre ||
+|affiche_plus_info  |x|x|| Formate un message "Cliquez ici pour + d'infos"|Recherche : Conteneur verre ||
+|nb_conteneur  |x|x|| Formate l'affichage du nombre de conteneur|Fiche d'information :  Conteneur verre ||
+|verif_maj  |x|x|| Formate un nombre de jour entre la date du jout et la date de mise à jour pour initialiser le déclencheur|Déclencheur : Mise à jour Plan Interactif TRI ||
+
+   * filtres : aucun
+   
+
+   * relations :
+
+|Géotables ou Tables| Champs de jointure | Type |
+|:---|:---|:---|
+|  an_dec_pav_doc_media | id | 0 à n (égal) |
+
+   * particularité(s) : un déclencheur a été initialisé sur supression, ajout ou modification de la donnée (ne fonctionne pas sur version SaaS 1.14.2). En attente nouvelle version pour test.
+   
+## GeoTable : `geo_dec_pav_tlc`
+
+|Attributs| Champ calculé | Formatage |Renommage|Particularité/Usage|Utilisation|Exemple|
+|:---|:-:|:-:|:---|:---|:---|:---|
+|affiche_info_bulle|x|x|| Formate une info bulle affichant le type de conteneur et son adresse |Recherche : Conteneur textile ||
+|nb_conteneur  |x|x|| Formate l'affichage du nombre de conteneur|Fiche d'information :  Conteneur textile ||
+
+   * filtres : aucun
+   
+
+   * relations :
+
+|Géotables ou Tables| Champs de jointure | Type |
+|:---|:---|:---|
+|  an_dec_pav_doc_media | id | 0 à n (égal) |
 
    * particularité(s) : aucune
    
@@ -2025,14 +2083,198 @@ Source : `geo_plan_refpoi`
 (1) si liste de domaine
 
  * Fiches d'information active : Equipement
+ 
+ ## Recherche (fonctionnalités) : `Foyers logements, résidences universitaires`
 
-## Fiche d'information : `Fiche adresse`
+Cette recherche permet à l'utilisateur d'afficher les POI des Foyers logements, résidences universitaires sur la carte.
 
-Source : `xapps_geo_vmr_adresse`
+  * Configuration :
 
-Cette fiche est issus de l'application RVA. Consultez le répertoire rva sur GitHub pour plus de précisions.
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Foyers logements|x|poi_n3|est égale à une valeur par défaut|14211,14212,14213 ou 14215||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Centres sociaux,actions sociales`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des centres sociaux et actions sociales sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Centres sociaux|x|poi_n3|est égale à une valeur par défaut|14311,14911 ou 14912||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `Hébergements scpécialisés`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des hébergements spécialisés sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Foyers logements|x|poi_n3|est égale à une valeur par défaut|14913, 14914 ou 14917||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Recherche (fonctionnalités) : `CIO`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des centres d'information et d'orientation sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|CIO|x|poi_n3|est égale à une valeur par défaut|18216||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+ 
+## Recherche (fonctionnalités) : `Salles polyvalentes, salles des fêtes, foyers`
+
+Cette recherche permet à l'utilisateur d'afficher les POI des salles polyvalentes, salles des fêtes et foyers sur la carte.
+
+  * Configuration :
+
+Source : `geo_plan_refpoi`
+
+|Attribut|Afficher|Rechercher|Suggestion|Attribut de géométrie|Tri des résultats|
+|:---|:-:|:-:|:-:|:-:|:-:|
+|Equipement|x|||||
+|Commune|x|||||
+|geom||||x||
+
+(la détection des doublons n'est pas activée ici)
+
+ * Filtres :
+
+|Groupe|Jointure|Filtres liés|
+|:---|:-:|:-:|
+|Groupe de filtres par défaut|`ET`|x|
+
+|Nom|Obligatoire|Attribut|Condition|Valeur|Champ d'affichage (1)|Champ de valeurs (1)|Champ de tri (1)|Ajout autorisé (1)|Particularités|
+|:---|:-:|:---|:---|:---|:---|:---|:---|:-:|:---|
+|Salles polyvalentes|x|poi_n3|est égale à une valeur par défaut|13414||||||
+|Filtre sur espace de carte|x|geom|est contenu dans la sélection courante|||||||
+
+(1) si liste de domaine
+
+ * Fiches d'information active : Equipement
+
+## Fiche d'information : `Fiche d'informations`
+
+Source : `xappspublic_geo_v_adresse (ARC)`
+
+ * Statistique : aucune
+ 
+ * Représentation :
+ 
+|Mode d'ouverture|Taille|Agencement des sections|
+|:---|:---|:---|
+|dans le gabarit|530x650|Accordéon|
+
+|Nom de la section|Attributs|Position label|Agencement attribut|Visibilité conditionnelle|Fichie liée|Ajout de données autorisé|
+|:---|:---|:---|:---|:---|:---|:---|
+|Votre adresse|adresse_commplete|Par défaut|Vertical||||
+|Votre mairie et votre élu(e) de quartier|||Vertical||||
+|Votre maire|lien_photo_mairie,affiche_coordonnee_mairie|Par défaut|Vertical||||
+|Votre ou vos élu(e)(s) de quartier|affiche_coordonnee_er_synt|Par défaut|Vertical||||
+|Où scolariser votre enfant ?|||Vertical||||
+|Maternelle|affiche_mat,commune_3,url|Masqué|Vertical||||
+|Elémentaire|affiche_ele,commune_3,url_1|Masqué|Vertical||||
+|Où voter ?|affiche_bureau|Par défaut|Vertical||||
+|Où prendre un bus, un car, un Allotic ?|nom,et_img_ligne|Par défaut|Vertical||+ d'infos (Arrêt TIC)||
+|Où déposer votre verre ou vos textiles ?|||Vertical||||
+|Verre à proximité|affiche_ordre,adresse,commune_1|Par défaut|Vertical||+ d'infos (Conteneur verre)||
+|Textile à proximité|affiche_ordre_1,adresse_1,commune_2|Par défaut|Vertical||+ d'infos (Conteneur textile)||
+|Où déposer votre verre ou vos textiles ?|||Vertical||||
+
+
+ * Saisie : aucune
+
+ * Modèle d'impression : aucun
+
 
 ## Fiche d'information : `Fiche équipement`
+
 
 
 Source : `r_plan.geo_plan_refpoi (usage APC)`
